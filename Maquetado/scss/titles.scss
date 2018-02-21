@@ -1,18 +1,17 @@
 .title {  
-
-  &:before {
+  font-size: $text-big;
+  position: relative;
+  margin: 40px 0 0 50px;
+  
+  &::before {
     content: '';
     background-image: url('./assets/triangle.svg');
     background-repeat: no-repeat;
-    height:	$title-decoration-height;
+    height: $title-decoration-height;
+    margin: -40px 0 0 -50px;
     position: absolute;
     width: $title-decoration-width;
+    z-index: -1;
   }
 
-  span {
-    font-size: $text-big;	
-    margin: 40px 0 0 50px;
-    position: relative;
-  }
 }
-

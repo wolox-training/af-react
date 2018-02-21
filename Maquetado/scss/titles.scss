@@ -1,16 +1,18 @@
 .title {  
-  margin: 30px 0 20px 40px;
 
-  img {
-  	height:	$title-decoration-height;
-  	position: absolute;
-  	width: $title-decoration-width;
+  &:before {
+    content: '';
+    background-image: url('./assets/triangle.svg');
+    background-repeat: no-repeat;
+    height:	$title-decoration-height;
+    position: absolute;
+    width: $title-decoration-width;
   }
 
   span {
-  	font-size: $text-big;	
-  	margin: 40px 0 0 70px;
-  	position: relative;
+    font-size: $text-big;	
+    margin: 40px 0 0 50px;
+    position: relative;
   }
 }
 

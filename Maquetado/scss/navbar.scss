@@ -1,7 +1,7 @@
 .navbar {
   align-items: center;
   background: $white;
-  box-shadow: 0 0 20px 0 grey;
+  box-shadow: 0 0 20px 0 $grey;
   display: flex;
   justify-content: space-between;
   height: $nav-height;

@@ -1,34 +1,46 @@
 .tech {
   background-color: $green;
+  background-clip: padding-box;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  font-size: $text-small;
   height: 320px;
+  margin: 50px; //Just for visualization
   padding: 20px 30px;
+  position: relative;
   text-align: center;
   width: 220px;
 
-  img {
+  &::before {
+    content: '';
+    border: solid 1px $green;
+    border-radius: 5px;
+    height: 320px;  
+    left: -15px;
+    position: absolute;
+    top: -15px;
+    width: 220px;
+  }
+
+  .tech-icon {
     height: $tech-logo-size;
+    margin-bottom: 20px;
   }
 
-  h2 {
-    font-size: $text-medium;
-    margin-top: 20px;
+  .tech-title {
+    font-size: $text-medium;    
+    margin-bottom: 20px;
   }
 
-  p {
+  .tech-release {
+    font-size: $text-small;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .tech-info {
+    font-size: $text-small;
     line-height: $text-small + 8px;
-    margin-top: 20px;
   }
 }
 
-.tech-border {
-  border: solid 1px $green;
-  border-radius: 5px;
-  height: 320px;
-  margin: 50px; //Just for visualization
-  padding: 10px 0 0 10px;
-  width: 220px;
-}

@@ -1,11 +1,11 @@
 .tech {
   background-color: $green;
-  background-clip: padding-box;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  height: 320px;
-  margin: 50px; //Just for visualization
+  height: 360px;
+  align-items: center;
+  margin: 0 30px 30px 0;
   padding: 20px 30px;
   position: relative;
   text-align: center;
@@ -15,16 +15,17 @@
     content: '';
     border: solid 1px $green;
     border-radius: 5px;
-    height: 320px;  
-    left: -15px;
+    height: 360px;  
+    left: -10px;
     position: absolute;
-    top: -15px;
+    top: -10px;
     width: 220px;
   }
 
   .tech-icon {
     height: $tech-logo-size;
     margin-bottom: 20px;
+    width: $tech-logo-size;
   }
 
   .tech-title {
@@ -42,5 +43,13 @@
     font-size: $text-small;
     line-height: $text-small + 8px;
   }
+}
+
+.tech-container {  
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-right;
+  margin-bottom: 30px;
+  padding: 0 70px;
 }
 

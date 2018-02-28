@@ -1,0 +1,18 @@
+.navbar {
+  align-items: center;
+  background: $white;
+  box-shadow: 0 0 20px 0 grey;
+  display: flex;
+  justify-content: space-between;
+  height: $nav-height;
+  left: 0;
+  padding: 0 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+
+  .nav-option {
+    font-size: $text-big;
+  }
+}

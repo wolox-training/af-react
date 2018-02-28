@@ -1,0 +1,29 @@
+.footer {
+  align-items: center;
+  background-color: $blue;
+  display: flex;
+  flex-direction: column;
+  height: $foot-height;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  width: 100%;
+
+  .foot-slogan {
+    color: $white;
+    font-size: $text-big;
+    margin-bottom: 40px;
+  }
+
+  .foot-brand {
+    color: $white;
+    font-size: 70px;
+  }
+
+  .foot-rights {
+    text-align: right;
+    color: $white;
+    font-size: $text-small;
+    width: 95%;
+  }
+}

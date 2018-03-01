@@ -1,0 +1,24 @@
+.footer {
+  align-items: center;
+  background-color: $blue;
+  display: flex;
+  flex-direction: column;
+  height: $foot-height;
+  justify-content: center;
+
+  .foot-slogan {
+    color: $white;
+    font-size: $text-big;
+    margin-bottom: 40px;
+  }
+
+  .foot-logo {
+    height: 70px;    
+  }  
+
+  .foot-rights {
+    align-self: flex-end;
+    color: $white;
+    font-size: $text-small;
+  }
+}

@@ -5,9 +5,8 @@
   flex-direction: column;
   height: $foot-height;
   justify-content: center;
-  left: 0;
-  position: absolute;
-  width: 100%;
+  //position: absolute;
+  margin: 0 -100px 0 -100px;
 
   .foot-slogan {
     color: $white;
@@ -20,9 +19,8 @@
   }  
 
   .foot-rights {
-    text-align: right;
+    align-self: flex-end;
     color: $white;
     font-size: $text-small;
-    width: 95%;
   }
 }

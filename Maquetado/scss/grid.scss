@@ -1,12 +1,14 @@
-.tech-container-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: auto;
-  grid-template-areas:
-    "tech-a tech-b tech-c"
-    "tech-a tech-d tech-e";
-  margin-bottom: 70px;
-  padding: 0 300px;
+@media screen and (min-width: 1024px) {
+  .tech-container-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "tech-a tech-b tech-c"
+      "tech-a tech-d tech-e";
+    margin-bottom: 70px;
+    padding: 0 300px;
+  }
 }
 
 .tech-react { 
@@ -45,10 +47,12 @@
   grid-area: tech-d;
 }
 
-.big-tech {
-  border-right: solid 2px $green;
-  display: flex;
-  align-items: center;
+@media screen and (min-width: 1024px) {  
+  .big-tech {
+    border-right: solid 2px $green;
+    display: flex;
+    align-items: center;
+  }
 }
 
 .tech-grid {
@@ -62,6 +66,15 @@
   position: relative;
   text-align: center;
   width: 220px;
+
+  @media screen and (min-width: 1024px) {
+    min-height: 360px;
+    margin: 0 30px 30px 0;
+  }
+
+  @media screen and (max-width: 1024px) {
+    height: auto;
+  } 
 
   .tech-icon {
     height: $tech-logo-size;
@@ -83,5 +96,11 @@
   .tech-info {
     font-size: $text-small;
     line-height: $text-small + 8px;
+  }
+}
+
+@media screen and (max-width: 1024px) {  
+  .tech-react, .tech-angular, .tech-vue, .tech-elm, .tech-rails, .tech-node, .tech-asp {
+    border-bottom: solid 2px $green;
   }
 }

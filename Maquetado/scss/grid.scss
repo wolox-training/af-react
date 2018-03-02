@@ -1,24 +1,14 @@
 .tech-container-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: auto;
   grid-template-areas:
-    "tech-a tech-b tech-c"
-    "tech-a tech-d tech-e";
-}
-
-.container-wrapper {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
+    ". tech-a tech-b tech-c ."
+    ". tech-a tech-d tech-e .";
   margin-bottom: 70px;
-  padding: 0 70px;
 }
 
 .tech-1 { 
-  border-right: solid 2px $green;
-  display: flex;
-  align-items: center;
   grid-area: tech-a;
 }
 
@@ -39,9 +29,6 @@
 }
 
 .tech-6 { 
-  border-right: solid 2px $green;
-  display: flex;
-  align-items: center;
   grid-area: tech-a;
 }
 
@@ -57,11 +44,18 @@
   grid-area: tech-d;
 }
 
+.big-tech {
+  border-right: solid 2px $green;
+  display: flex;
+  align-items: center;
+}
+
 .tech-grid {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  height: 360px;
-  align-items: center;
+  justify-content: center;
+  min-height: 360px;
   margin: 0 30px 30px 0;
   padding: 20px 30px;
   position: relative;

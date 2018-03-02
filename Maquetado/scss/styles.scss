@@ -3,5 +3,9 @@
 }
 
 .body-container {
-  padding: $nav-height+50px 100px 0 100px;
+  padding: $nav-height+50px 100px 0;
+
+  @media screen and (max-width: 1024px) {
+    padding: $nav-height+50px 50px 0;
+  }
 }

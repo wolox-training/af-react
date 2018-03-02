@@ -10,15 +10,28 @@
     color: $white;
     font-size: $text-big;
     margin-bottom: 40px;
+
+    @media screen and (max-width: 1024px) {
+      margin-bottom: 20px;    
+    }
   }
 
   .foot-logo {
-    height: 70px;    
+    height: 70px;
+
+    @media screen and (max-width: 1024px) {
+      height: 50px;
+      margin-bottom: 10px;
+    }    
   }  
 
   .foot-rights {
     align-self: flex-end;
     color: $white;
     font-size: $text-small;
+
+    @media screen and (max-width: 1024px) {
+      align-self: center;
+    } 
   }
 }

@@ -1,15 +1,12 @@
 .tech-container-grid {
   display: grid;
-
-  @media screen and (min-width: 1024px) {
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto;
-    grid-template-areas:
-      "tech-a tech-b tech-c"
-      "tech-a tech-d tech-e";
-    margin-bottom: 70px;
-    padding: 0 300px;
-  }
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "tech-a tech-b tech-c"
+    "tech-a tech-d tech-e";
+  margin-bottom: 70px;
+  padding: 0 300px;
 
   @media screen and (max-width: 1024px) {
     grid-template-columns: 1fr;

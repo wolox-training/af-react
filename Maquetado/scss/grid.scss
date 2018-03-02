@@ -3,44 +3,45 @@
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: auto;
   grid-template-areas:
-    ". tech-a tech-b tech-c ."
-    ". tech-a tech-d tech-e .";
+    "tech-a tech-b tech-c"
+    "tech-a tech-d tech-e";
   margin-bottom: 70px;
+  padding: 0 300px;
 }
 
-.tech-1 { 
+.tech-react { 
   grid-area: tech-a;
 }
 
-.tech-2 { 
+.tech-angular { 
   grid-area: tech-b;
 }
 
-.tech-3 { 
+.tech-vue { 
   grid-area: tech-c;
 }
 
-.tech-4 { 
+.tech-elm { 
   grid-area: tech-d;
 }
 
-.tech-5 { 
+.tech-poly { 
   grid-area: tech-e;
 }
 
-.tech-6 { 
+.tech-rails { 
   grid-area: tech-a;
 }
 
-.tech-7 { 
+.tech-node { 
   grid-area: tech-b
 }
 
-.tech-8 { 
+.tech-asp { 
   grid-area: tech-c
 }
 
-.tech-9 { 
+.tech-django { 
   grid-area: tech-d;
 }
 

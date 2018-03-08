@@ -1,0 +1,45 @@
+.book-info {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 65px;
+  margin-right: 70px;
+  overflow-wrap: break-word;
+  width: $book-cover-width;
+
+  .book-img {
+    height: $book-cover-height;
+    margin-bottom: 11px;
+  }
+
+  .book-default-backgroud {
+    align-items: center;
+    display: flex;
+    background-color: $grey;
+    justify-content: center;
+  }
+
+  .book-title {
+    margin-bottom: 4px;
+  }
+
+  .book-author {
+    font-size: $font-size-small;
+  }
+}
+
+.book-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.book-input {
+  background: $light-grey;
+  color: $grey-font;
+  font-size: $font-size-medium;
+  font-style: italic;
+  height: 38px;
+  margin-bottom: 65px;
+  margin-right: 28px;
+  padding: 0 12px;
+  width: 238px;
+}

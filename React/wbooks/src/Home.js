@@ -1,119 +1,139 @@
 import React, { Component } from 'react';
-import { BOOKS , FILTERS } from './books_json.js';
-import './application.css';
+import PropTypes from 'prop-types';
 
-function BookCover(props) {
-  return (props.image_url != null)?
-    (<img className="book-img" src={props.image_url}/>) :
-    (<div className="book-img book-default-backgroud">
-      <img src={require('./assets/default_book.svg')}/>
-    </div>);
+import { BOOKS, FILTERS } from './books_json';
+import './application.css';
+import * as defaultImg from './assets/default_book.svg';
+
+function BookCover({ imageUrl }) {
+  return imageUrl != null ? (
+    <img className="book-img" alt="Book cover" src={imageUrl} />
+  ) : (
+    <div className="book-img book-default-backgroud">
+      <img alt="Default book cover" src={defaultImg} />
+    </div>
+  );
 }
 
-function BookInfo(props) {
-  const { author, title, image_url } = props;  
-  return(
+BookCover.propTypes = {
+  imageUrl: PropTypes.string
+};
+
+function BookInfo({ author, title, imageUrl }) {
+  return (
     <div className="book-info">
-      <BookCover
-        image_url={image_url}/>
+      <BookCover imageUrl={imageUrl} />
       <h4 className="book-title">{title}</h4>
       <span className="book-author">{author}</span>
-    </div>  
-  );         
+    </div>
+  );
 }
 
-function BookContainer(props) {
+BookInfo.propTypes = {
+  author: PropTypes.string,
+  title: PropTypes.string,
+  imageUrl: PropTypes.string
+};
+
+function BookContainer({ searchText, filterOption, books }) {
   const elements = [];
-  const { searchText, filterOption } = props;
-  props.books.forEach(book => {
+  books.forEach(book => {
     if (book[filterOption.toLowerCase()] && book[filterOption.toLowerCase()].indexOf(searchText) === -1) {
       return;
     }
     elements.push(
-      <BookInfo 
-        key={book.id}
-        image_url={book.image_url}
-        title={book.title}
-        author={book.author} />
+      <BookInfo key={book.id} imageUrl={book.imageUrl} title={book.title} author={book.author} />
     );
-  }); 
-  return(
-    <div className="book-container">{elements}</div>
-  );   
+  });
+  return <div className="book-container">{elements}</div>;
 }
+
+const BookPropType = {
+  id: PropTypes.number,
+  author: PropTypes.string,
+  title: PropTypes.string,
+  genre: PropTypes.string,
+  publisher: PropTypes.string,
+  year: PropTypes.number,
+  image_url: PropTypes.string
+};
+
+BookContainer.propTypes = {
+  searchText: PropTypes.string,
+  filterOption: PropTypes.string,
+  books: PropTypes.shape(BookPropType)
+};
 
 class BookFilter extends Component {
   handleFilterOptionChange = e => this.props.onFilterOptionChange(e.target.value);
 
   render() {
     const { filters } = this.props;
-    const renderedFilters = filters.map(filter => 
-      <option 
-        key={filter} 
-        value={filter.toLowerCase()}>
+    const renderedFilters = filters.map(filter => (
+      <option key={filter} value={filter.toLowerCase()}>
         {filter}
       </option>
-    );
+    ));
 
     return (
-      <select 
-        className="book-input"
-        onChange={this.handleFilterOptionChange}>
-        <option 
-          key="Placeholder" 
-          value="placeholder"
-          defaultValue="selected">
+      <select className="book-input" onChange={this.handleFilterOptionChange}>
+        <option key="Placeholder" value="placeholder" defaultValue="selected">
           Seleccionar filtro:
         </option>
-          {renderedFilters}
+        {renderedFilters}
       </select>
     );
   }
 }
+BookFilter.propTypes = {
+  filters: PropTypes.arrayOf(PropTypes.string),
+  onFilterOptionChange: PropTypes.func
+};
 
 class BookSearch extends Component {
   handleSearchTextChange = e => this.props.onSearchTextChange(e.target.value);
 
-  render() {    
+  render() {
     const { searchText } = this.props;
-    return(
-      <input 
-        className="book-input book-search" 
-        type="text" 
+    return (
+      <input
+        className="book-input book-search"
+        type="text"
         placeholder="Buscar..."
         value={searchText}
-        onChange={this.handleSearchTextChange}/>
+        onChange={this.handleSearchTextChange}
+      />
     );
   }
 }
 
 class Home extends Component {
-  state = { searchText: "", filterOption: "placeholder" }
+  state = { searchText: '', filterOption: 'placeholder' };
 
   handleSearchTextChange = searchText => {
     this.setState({ searchText });
-  }
+  };
 
   handleFilterOptionChange = filterOption => {
     this.setState({ filterOption });
-  }
+  };
 
-  render(){
+  render() {
     return (
-      <div>   
-        <BookFilter 
+      <div>
+        <BookFilter
           filters={FILTERS}
           filterOption={this.state.filterOption}
-          onFilterOptionChange={this.handleFilterOptionChange}/>  
-        <BookSearch
-          searchText={this.state.searchText}
-          onSearchTextChange={this.handleSearchTextChange}/>   
-        <BookContainer 
+          onFilterOptionChange={this.handleFilterOptionChange}
+        />
+        <BookSearch searchText={this.state.searchText} onSearchTextChange={this.handleSearchTextChange} />
+        <BookContainer
           books={BOOKS}
           searchText={this.state.searchText}
-          filterOption={this.state.filterOption}/>
+          filterOption={this.state.filterOption}
+        />
       </div>
-    )
+    );
   }
 }
 

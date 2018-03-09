@@ -1,12 +1,10 @@
-import React from 'react';
-import {BOOKS, FILTERS} from './books_json.js';
+import React, { Component } from 'react';
+import { BOOKS , FILTERS } from './books_json.js';
 import './application.css';
 
-class BookInfo extends React.Component {
-  render() {
-    const author = this.props.author;
-    const title = this.props.title;
-    const image_url = this.props.image_url;
+class BookInfo extends Component {
+  render() {  
+    const { author, title, image_url } = this.props;
     
     const book_cover = (image_url != null)?
       (<img className="book-img" src={image_url}/>) :
@@ -24,12 +22,11 @@ class BookInfo extends React.Component {
   }
 }
 
-class BookContainer extends React.Component {
+class BookContainer extends Component {
   render() {
     const elements = [];
-    const searchText = this.props.searchText;
-    const filterOption = this.props.filterOption;
-    this.props.books.forEach((book) => {
+    const { searchText, filterOption } = this.props;
+    this.props.books.forEach(book => {
       if (book[filterOption.toLowerCase()] != null && book[filterOption.toLowerCase()].indexOf(searchText) === -1) {
         return;
       }
@@ -47,57 +44,40 @@ class BookContainer extends React.Component {
   }
 }
 
-class BookFilter extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleFilterOptionChange = this.handleFilterOptionChange.bind(this);
-  }
-
-  handleFilterOptionChange(e) {
-    this.props.onFilterOptionChange(e.target.value);
-  }
+class BookFilter extends Component {
+  handleFilterOptionChange = e => this.props.onFilterOptionChange(e.target.value);
 
   render() {
-    const filters = [];
-    filters.push(
+    const { filters } = this.props;
+    const renderedFilters = filters.map(filter => 
       <option 
-          key="Placeholder" 
-          value="placeholder"
-          defaultValue="selected">
-            Seleccionar filtro:
-        </option>
+        key={filter} 
+        value={filter.toLowerCase()}>
+        {filter}
+      </option>
     );
-    this.props.filters.forEach((filter) => {
-      filters.push(
-        <option 
-          key={filter} 
-          value={filter.toLowerCase()}>
-            {filter}
-        </option>
-      );
-    });
-    return(
+
+    return (
       <select 
         className="book-input"
         onChange={this.handleFilterOptionChange}>
-        {filters}
+        <option 
+          key="Placeholder" 
+          value="placeholder"
+          defaultValue="selected">
+          Seleccionar filtro:
+        </option>
+          {renderedFilters}
       </select>
     );
   }
 }
 
-class BookSearch extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleSearchTextChange = this.handleSearchTextChange.bind(this);
-  }
-
-  handleSearchTextChange(e) {
-    this.props.onSearchTextChange(e.target.value);
-  }
+class BookSearch extends Component {
+  handleSearchTextChange = e => this.props.onSearchTextChange(e.target.value);
 
   render() {    
-    const searchText = this.props.searchText;
+    const { searchText } = this.props;
     return(
       <input 
         className="book-input book-search" 
@@ -109,27 +89,15 @@ class BookSearch extends React.Component {
   }
 }
 
-class Home extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchText: '',
-      filterOption: "placeholder"
-    };
-    this.handleSearchTextChange = this.handleSearchTextChange.bind(this);
-    this.handleFilterOptionChange = this.handleFilterOptionChange.bind(this);
+class Home extends Component {
+  state = { searchText: "", filterOption: "placeholder" }
+
+  handleSearchTextChange = searchText => {
+    this.setState({ searchText });
   }
 
-  handleSearchTextChange(searchText) {
-    this.setState({
-      searchText:searchText
-    });
-  }
-
-  handleFilterOptionChange(filterOption) {
-    this.setState({
-      filterOption:filterOption
-    });
+  handleFilterOptionChange = filterOption => {
+    this.setState({ filterOption });
   }
 
   render(){

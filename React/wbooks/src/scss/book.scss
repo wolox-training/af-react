@@ -13,8 +13,8 @@
 
   .book-default-backgroud {
     align-items: center;
-    display: flex;
     background-color: $grey;
+    display: flex;
     justify-content: center;
   }
 
@@ -48,13 +48,13 @@
   position: relative;
 
   &::after {
-    content: "";
     background-image: url('./assets/search.svg');
     background-repeat: no-repeat;
+    content: "";
     height: 28px;
     top: 0;
     left: 0;
-   	position: absolute;
+    position: absolute;
     width: 28px;
   }
 }

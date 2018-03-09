@@ -2,46 +2,44 @@ import React, { Component } from 'react';
 import { BOOKS , FILTERS } from './books_json.js';
 import './application.css';
 
-class BookInfo extends Component {
-  render() {  
-    const { author, title, image_url } = this.props;
-    
-    const book_cover = (image_url != null)?
-      (<img className="book-img" src={image_url}/>) :
-      (<div className="book-img book-default-backgroud">
-        <img src={require('./assets/default_book.svg')}/>
-      </div>);
-
-    return(
-      <div className="book-info">
-        {book_cover}
-        <h4 className="book-title">{title}</h4>
-        <span className="book-author">{author}</span>
-      </div>  
-    );         
-  }
+function BookCover(props) {
+  return (props.image_url != null)?
+    (<img className="book-img" src={props.image_url}/>) :
+    (<div className="book-img book-default-backgroud">
+      <img src={require('./assets/default_book.svg')}/>
+    </div>);
 }
 
-class BookContainer extends Component {
-  render() {
-    const elements = [];
-    const { searchText, filterOption } = this.props;
-    this.props.books.forEach(book => {
-      if (book[filterOption.toLowerCase()] != null && book[filterOption.toLowerCase()].indexOf(searchText) === -1) {
-        return;
-      }
-      elements.push(
-        <BookInfo 
-          key={book.id}
-          image_url={book.image_url}
-          title={book.title}
-          author={book.author} />
-      );
-    }); 
-    return(
-      <div className="book-container">{elements}</div>
-    );   
-  }
+function BookInfo(props) {
+  const { author, title, image_url } = props;  
+  return(
+    <div className="book-info">
+      <BookCover
+        image_url={image_url}/>
+      <h4 className="book-title">{title}</h4>
+      <span className="book-author">{author}</span>
+    </div>  
+  );         
+}
+
+function BookContainer(props) {
+  const elements = [];
+  const { searchText, filterOption } = props;
+  props.books.forEach(book => {
+    if (book[filterOption.toLowerCase()] && book[filterOption.toLowerCase()].indexOf(searchText) === -1) {
+      return;
+    }
+    elements.push(
+      <BookInfo 
+        key={book.id}
+        image_url={book.image_url}
+        title={book.title}
+        author={book.author} />
+    );
+  }); 
+  return(
+    <div className="book-container">{elements}</div>
+  );   
 }
 
 class BookFilter extends Component {
@@ -118,6 +116,5 @@ class Home extends Component {
     )
   }
 }
-
 
 export default Home;

@@ -1,6 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 
-import Home from './Home/';
+import WBooks from './WBooks';
 
-ReactDOM.render(<Home />, document.getElementById('root'));
+ReactDOM.render(
+  <BrowserRouter>
+    <WBooks />
+  </BrowserRouter>,
+  document.getElementById('root')
+);

@@ -24,14 +24,14 @@ const BookPropType = {
   title: PropTypes.string,
   genre: PropTypes.string,
   publisher: PropTypes.string,
-  year: PropTypes.number,
+  year: PropTypes.string,
   image_url: PropTypes.string
 };
 
 BookContainer.propTypes = {
   searchText: PropTypes.string,
   filterOption: PropTypes.string,
-  books: PropTypes.shape(BookPropType)
+  books: PropTypes.arrayOf(PropTypes.shape(BookPropType))
 };
 
 export default BookContainer;

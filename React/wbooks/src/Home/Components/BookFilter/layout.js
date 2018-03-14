@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import '../../../application.css';
 
-function BookFilter({ filters }) {
+function BookFilterLayout({ filters, handleFilterOptionChange }) {
   const renderedFilters = filters.map(filter => (
     <option key={filter} value={filter.toLowerCase()}>
       {filter}
@@ -10,7 +11,7 @@ function BookFilter({ filters }) {
   ));
 
   return (
-    <select className="book-input" onChange={this.handleFilterOptionChange}>
+    <select className="book-input" onChange={handleFilterOptionChange}>
       <option key="Placeholder" value="placeholder" defaultValue="selected">
         Seleccionar filtro:
       </option>
@@ -18,7 +19,9 @@ function BookFilter({ filters }) {
     </select>
   );
 }
-BookFilter.propTypes = {
+BookFilterLayout.propTypes = {
   filters: PropTypes.arrayOf(PropTypes.string),
-  onFilterOptionChange: PropTypes.func
+  handleFilterOptionChange: PropTypes.func
 };
+
+export default BookFilterLayout;

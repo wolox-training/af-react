@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import BookContainer from './Components/BookContainer';
-
 import { BOOKS, FILTERS } from '../books_json';
+
+import BookContainer from './Components/BookContainer';
+import BookSearch from './Components/BookSearch';
+import BookFilter from './Components/BookFilter';
 
 function HomeLayout({ filterOption, searchText, handleFilterOptionChange, handleSearchTextChange }) {
   return (

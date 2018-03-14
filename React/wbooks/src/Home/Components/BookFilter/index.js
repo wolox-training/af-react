@@ -9,10 +9,12 @@ class BookFilter extends Component {
 
   render() {
     const { filters } = this.props;
-    return <BookFilterLayout filters={filters} handleFilterOptionChange={handleFilterOptionChange} />;
+    return <BookFilterLayout filters={filters} handleFilterOptionChange={this.handleFilterOptionChange} />;
   }
 }
 BookFilter.propTypes = {
   filters: PropTypes.arrayOf(PropTypes.string),
-  handleFilterOptionChange: PropTypes.func
+  onFilterOptionChange: PropTypes.func
 };
+
+export default BookFilter;

@@ -1,0 +1,227 @@
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+label,
+input,
+a,
+button,
+select,
+textarea {
+  color: #000;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 14px;
+  margin: 0; }
+  h1:focus,
+  h2:focus,
+  h3:focus,
+  h4:focus,
+  h5:focus,
+  h6:focus,
+  p:focus,
+  span:focus,
+  label:focus,
+  input:focus,
+  a:focus,
+  button:focus,
+  select:focus,
+  textarea:focus {
+    outline: none; }
+
+select {
+  -moz-appearance: none;
+  -webkit-appearance: none; }
+
+table {
+  border-collapse: collapse;
+  table-layout: fixed; }
+
+input,
+select,
+textarea,
+button {
+  border: 0;
+  border-radius: 0; }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0; }
+
+button {
+  background: transparent;
+  cursor: pointer; }
+
+button::-moz-focus-inner {
+  border: 0; }
+
+a {
+  cursor: pointer;
+  text-decoration: none; }
+  a:focus, a:active, a:hover {
+    color: #000;
+    text-decoration: none; }
+
+ul,
+li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+
+::placeholder {
+  color: #999;
+  opacity: 1; }
+
+* {
+  font-family: "Roboto", sans-serif; }
+
+h3 {
+  font-size: 20px;
+  font-weight: bold; }
+
+h4 {
+  font-size: 14px;
+  font-weight: bold; }
+
+.body-container {
+  padding: 145px 358px; }
+
+hr {
+  border: 1px solid #00adee;
+  height: 1px;
+  margin-bottom: 31px; }
+
+.back-button {
+  left: 50px;
+  position: absolute;
+  top: 100px; }
+
+.book-default-background {
+  align-items: center;
+  background-color: #d8d8d8;
+  display: flex;
+  justify-content: center; }
+
+.book-img {
+  height: 182px;
+  margin-bottom: 11px; }
+
+.book-info {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 65px;
+  margin-right: 70px;
+  overflow-wrap: break-word;
+  width: 128px; }
+  .book-info .book-img {
+    height: 182px;
+    margin-bottom: 11px; }
+  .book-info .book-default-background {
+    align-items: center;
+    background-color: #d8d8d8;
+    display: flex;
+    justify-content: center; }
+  .book-info .book-title {
+    margin-bottom: 4px; }
+  .book-info .book-author {
+    font-size: 10px; }
+
+.book-container {
+  display: flex;
+  flex-flow: row wrap; }
+
+.book-input {
+  background: #f4f4f4;
+  color: #9b9b9b;
+  font-size: 14px;
+  font-style: italic;
+  height: 38px;
+  margin-bottom: 65px;
+  margin-right: 28px;
+  padding: 0 12px;
+  width: 238px; }
+
+.book-search {
+  position: relative; }
+  .book-search::after {
+    background-image: url("./assets/search.svg");
+    background-repeat: no-repeat;
+    content: "";
+    height: 28px;
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 28px; }
+
+.book-detail-container {
+  display: flex;
+  margin-bottom: 36px;
+  overflow-wrap: break-word; }
+  .book-detail-container .book-detail-img {
+    height: 272px;
+    margin-right: 21px;
+    width: 400px; }
+  .book-detail-container .book-default-background {
+    align-items: center;
+    background-color: #d8d8d8;
+    display: flex;
+    justify-content: center;
+    width: 400px; }
+  .book-detail-container .book-detail-info-container {
+    display: flex;
+    flex-direction: column; }
+    .book-detail-container .book-detail-info-container .book-detail-title {
+      margin-bottom: 10px; }
+    .book-detail-container .book-detail-info-container .book-detail-author {
+      font-size: 16px;
+      margin-bottom: 22px; }
+    .book-detail-container .book-detail-info-container .book-detail-year {
+      font-size: 16px;
+      margin-bottom: 8px; }
+    .book-detail-container .book-detail-info-container .book-detail-genre {
+      font-size: 16px;
+      margin-bottom: 8px; }
+    .book-detail-container .book-detail-info-container .book-detail-year {
+      font-size: 16px;
+      margin-bottom: 13px; }
+    .book-detail-container .book-detail-info-container .book-detail-desc {
+      color: #9b9b9b;
+      font-size: 14px;
+      margin-bottom: auto; }
+    .book-detail-container .book-detail-info-container .book-detail-rent-button {
+      background-color: #00adee;
+      color: #ffffff;
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: auto;
+      height: 38px;
+      width: 192px; }
+
+.green-title {
+  color: #a5cd39;
+  margin-bottom: 16px; }
+
+.suggestion-container {
+  display: flex;
+  flex-flow: row wrap;
+  margin-bottom: 31px;
+  padding: 0 40px; }
+
+.suggestion-img {
+  height: 124px;
+  margin-right: 54px;
+  width: 87px; }
+
+/*# sourceMappingURL=application.css.map */

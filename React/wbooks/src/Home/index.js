@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 
-import '../application.css';
-import HomeLayout from './layout';
+import Home from './layout';
 
-class Home extends Component {
+class HomeContainer extends Component {
   state = { searchText: '', filterOption: 'placeholder' };
 
   handleSearchTextChange = searchText => {
@@ -16,7 +15,7 @@ class Home extends Component {
 
   render() {
     return (
-      <HomeLayout
+      <Home
         searchText={this.state.searchText}
         filterOption={this.state.filterOption}
         handleFilterOptionChange={this.handleFilterOptionChange}
@@ -26,4 +25,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default HomeContainer;

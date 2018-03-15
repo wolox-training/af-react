@@ -5,12 +5,12 @@ import { BOOKS, FILTERS } from '../books_json';
 
 import BookContainer from './Components/BookContainer';
 import BookSearch from './Components/BookSearch';
-import BookFilter from './Components/BookFilter';
+import BookFilterContainer from './Components/BookFilter';
 
-function HomeLayout({ filterOption, searchText, handleFilterOptionChange, handleSearchTextChange }) {
+function Home({ filterOption, searchText, handleFilterOptionChange, handleSearchTextChange }) {
   return (
-    <div>
-      <BookFilter
+    <div className="body-container">
+      <BookFilterContainer
         filters={FILTERS}
         filterOption={filterOption}
         onFilterOptionChange={handleFilterOptionChange}
@@ -21,11 +21,11 @@ function HomeLayout({ filterOption, searchText, handleFilterOptionChange, handle
   );
 }
 
-HomeLayout.propTypes = {
+Home.propTypes = {
   filterOption: PropTypes.string,
   searchText: PropTypes.string,
-  handleFilterOptionChange: PropTypes.func,
-  handleSearchTextChange: PropTypes.func
+  handleFilterOptionChange: PropTypes.func.isRequired,
+  handleSearchTextChange: PropTypes.func.isRequired
 };
 
-export default HomeLayout;
+export default Home;

@@ -25,10 +25,10 @@ function BookDetailInfo({ imageUrl, title, author, year, genre }) {
 }
 
 BookDetailInfo.propTypes = {
-  author: PropTypes.string,
-  title: PropTypes.string,
-  genre: PropTypes.string,
-  year: PropTypes.string,
+  author: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  genre: PropTypes.string.isRequired,
+  year: PropTypes.string.isRequired,
   imageUrl: PropTypes.string
 };
 

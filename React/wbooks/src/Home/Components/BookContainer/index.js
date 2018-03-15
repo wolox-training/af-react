@@ -1,30 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import '../../../application.css';
+import { Link } from 'react-router-dom';
 
 import BookInfo from './Components/BookInfo';
 
 function BookContainer({ searchText, filterOption, books }) {
-  const elements = [];
-  books.forEach(book => {
-    if (book[filterOption.toLowerCase()] && book[filterOption.toLowerCase()].indexOf(searchText) === -1) {
-      return;
-    }
-    elements.push(
-      <BookInfo key={book.id} imageUrl={book.imageUrl} title={book.title} author={book.author} />
-    );
-  });
-  return <div className="book-container">{elements}</div>;
+  return (
+    <div className="book-container">
+      {books
+        .filter(
+          book =>
+            !book[filterOption.toLowerCase()] || book[filterOption.toLowerCase()].indexOf(searchText) !== -1
+        )
+        .map(book => (
+          <Link to={`/book/${book.id}`} key={book.id}>
+            <BookInfo imageUrl={book.imageUrl} title={book.title} author={book.author} />
+          </Link>
+        ))}
+    </div>
+  );
 }
 
 const BookPropType = {
-  id: PropTypes.number,
-  author: PropTypes.string,
-  title: PropTypes.string,
-  genre: PropTypes.string,
-  publisher: PropTypes.string,
-  year: PropTypes.string,
+  id: PropTypes.number.isRequired,
+  author: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  genre: PropTypes.string.isRequired,
+  publisher: PropTypes.string.isRequired,
+  year: PropTypes.string.isRequired,
   image_url: PropTypes.string
 };
 

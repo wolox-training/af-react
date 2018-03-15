@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import '../../../application.css';
-
 class BookSearch extends Component {
   handleSearchTextChange = e => this.props.onSearchTextChange(e.target.value);
 
@@ -22,7 +20,7 @@ class BookSearch extends Component {
 
 BookSearch.propTypes = {
   searchText: PropTypes.string,
-  onSearchTextChange: PropTypes.func
+  onSearchTextChange: PropTypes.func.isRequired
 };
 
 export default BookSearch;

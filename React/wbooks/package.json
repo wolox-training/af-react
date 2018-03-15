@@ -6,6 +6,7 @@
     "eslint-config-react-app": "^2.1.0",
     "eslint-config-wolox": "^1.0.0",
     "eslint-loader": "1.9.0",
+    "node-sass-chokidar": "^1.1.0",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -13,6 +14,8 @@
     "react-scripts": "1.1.1"
   },
   "scripts": {
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",

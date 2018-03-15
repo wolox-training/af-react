@@ -1,4 +1,4 @@
-.book-default-backgroud {
+.book-default-background {
   align-items: center;
   background-color: $grey;
   display: flex;
@@ -23,7 +23,7 @@
     margin-bottom: 11px;
   }
 
-  .book-default-backgroud {
+  .book-default-background {
     align-items: center;
     background-color: $grey;
     display: flex;
@@ -79,14 +79,15 @@
   .book-detail-img {
     height: 272px;
     margin-right: 21px;
-    width: 191px;
+    width: 400px;
   }
 
-  .book-default-backgroud {
+  .book-default-background {
     align-items: center;
     background-color: $grey;
     display: flex;
     justify-content: center;
+    width: 400px;
   }
 
   .book-detail-info-container {
@@ -120,6 +121,7 @@
     .book-detail-desc {
       color: $grey-font;
       font-size: $font-size-medium;
+      margin-bottom: auto;
     }
 
     .book-detail-rent-button {
@@ -127,13 +129,14 @@
       color: $white;
       font-size: $font-size-big;
       font-weight: bold;
+      margin-top: auto;
       height: 38px;
       width: 192px;
     }
   }
 }
 
-.suggestion-title {
+.green-title {
   color: $green;
   margin-bottom: 16px;
 }

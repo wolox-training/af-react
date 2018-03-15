@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import '../../../../../application.css';
-
 import BookCover from '../../../../../Components/BookCover';
+
+import './style.css';
 
 function BookInfo({ author, title, imageUrl }) {
   const imgStyle = 'book-img';
@@ -17,8 +17,8 @@ function BookInfo({ author, title, imageUrl }) {
 }
 
 BookInfo.propTypes = {
-  author: PropTypes.string,
-  title: PropTypes.string,
+  author: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   imageUrl: PropTypes.string
 };
 

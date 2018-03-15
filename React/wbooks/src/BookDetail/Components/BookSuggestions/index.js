@@ -11,24 +11,24 @@ function BookSuggestions({ suggestions }) {
   });
   return (
     <div>
-      <h3 className="suggestion-title">Sugerencias</h3>
+      <h3 className="green-title">Sugerencias</h3>
       <div className="suggestion-container">{books}</div>
     </div>
   );
 }
 
 const BookPropType = {
-  id: PropTypes.number,
-  author: PropTypes.string,
-  title: PropTypes.string,
-  genre: PropTypes.string,
-  publisher: PropTypes.string,
-  year: PropTypes.string,
+  id: PropTypes.number.isRequired,
+  author: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  genre: PropTypes.string.isRequired,
+  publisher: PropTypes.string.isRequired,
+  year: PropTypes.string.isRequired,
   image_url: PropTypes.string
 };
 
 BookSuggestions.propTypes = {
-  suggestions: PropTypes.arrayOf(PropTypes.shape(BookPropType))
+  suggestions: PropTypes.arrayOf(PropTypes.shape(BookPropType).isRequired)
 };
 
 export default BookSuggestions;

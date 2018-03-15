@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import '../application.css';
 import * as defaultImg from '../assets/default_book.svg';
 
 function BookCover({ imageUrl, imgStyle }) {
-  return imageUrl != null ? (
+  return imageUrl ? (
     <img className={imgStyle} alt="Book cover" src={imageUrl} />
   ) : (
-    <div className={`${imgStyle} book-default-backgroud`}>
+    <div className={`${imgStyle} book-default-background`}>
       <img alt="Default book cover" src={defaultImg} />
     </div>
   );

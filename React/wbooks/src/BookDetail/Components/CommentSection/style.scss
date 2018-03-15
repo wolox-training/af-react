@@ -1,0 +1,58 @@
+@import "src/Components/app.scss";
+
+.comment-image {
+  border-radius: 20px;
+  height: 40px;
+  margin-right: 16px;
+  width: 40px;
+}
+
+.send-comment-button {
+  background-color: $green;
+  color: $white;
+  font-size: $font-size-medium-big;
+  font-weight: bold;
+  height: 38px;
+  width: 192px;
+}
+
+.comment-container {
+  display: flex;
+  padding: 0 35px;
+
+  .comment-subcontainer {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+    .comment-title {
+      margin-bottom: 16px;
+    }
+
+    .comment-textarea {
+      border: solid 1px black;
+      margin-bottom: 16px;
+      width: 100%;
+    }
+
+    .comment-name {
+      margin-bottom: 10px;
+    }
+
+    .comment-date {
+      color: $grey-font;
+      font-size: $font-size-small;
+      margin-bottom: 11px;
+    }
+
+    .comment-text {
+      color: $grey-font;
+      font-size: $font-size-medium;
+    }
+  }
+}
+
+.green-title {
+  color: $green;
+  margin-bottom: 16px;
+}

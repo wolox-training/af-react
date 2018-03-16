@@ -4,15 +4,14 @@ import PropTypes from 'prop-types';
 import BookCover from '../../../Components/BookCover';
 
 function BookSuggestions({ suggestions }) {
-  const books = [];
-  const imgStyle = 'suggestion-img';
-  suggestions.forEach(b => {
-    books.push(<BookCover key={b.id} imageUrl={b.imageUrl} imgStyle={imgStyle} />);
-  });
   return (
     <div>
       <h3 className="green-title">Sugerencias</h3>
-      <div className="suggestion-container">{books}</div>
+      <div className="suggestion-container">
+        {suggestions.map(suggestion => (
+          <BookCover key={suggestion.id} imageUrl={suggestion.imageUrl} imgStyle="suggestion-img" />
+        ))}
+      </div>
     </div>
   );
 }
@@ -28,7 +27,7 @@ const BookPropType = {
 };
 
 BookSuggestions.propTypes = {
-  suggestions: PropTypes.arrayOf(PropTypes.shape(BookPropType).isRequired)
+  suggestions: PropTypes.arrayOf(PropTypes.shape(BookPropType).isRequired).isRequired
 };
 
 export default BookSuggestions;

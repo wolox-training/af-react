@@ -6,10 +6,9 @@ import BookCover from '../../../../../Components/BookCover';
 import './style.css';
 
 function BookInfo({ author, title, imageUrl }) {
-  const imgStyle = 'book-img';
   return (
     <div className="book-info">
-      <BookCover imageUrl={imageUrl} imgStyle={imgStyle} />
+      <BookCover imageUrl={imageUrl} imgStyle="book-img" />
       <h4 className="book-title">{title}</h4>
       <span className="book-author">{author}</span>
     </div>

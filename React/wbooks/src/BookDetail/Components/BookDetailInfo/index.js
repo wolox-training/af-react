@@ -4,10 +4,9 @@ import PropTypes from 'prop-types';
 import BookCover from '../../../Components/BookCover';
 
 function BookDetailInfo({ imageUrl, title, author, year, genre }) {
-  const imgStyle = 'book-detail-img';
   return (
     <div className="book-detail-container">
-      <BookCover imageUrl={imageUrl} imgStyle={imgStyle} />
+      <BookCover imageUrl={imageUrl} imgStyle="book-detail-img" />
       <div className="book-detail-info-container">
         <h3 className="book-detail-title">{title}</h3>
         <span className="book-detail-author">{author}</span>

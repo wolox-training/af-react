@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import * as defaultImg from '../assets/default_book.svg';
+import defaultImg from '../assets/default_book.svg';
 
 function BookCover({ imageUrl, imgStyle }) {
   return imageUrl ? (

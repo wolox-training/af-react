@@ -1,0 +1,23 @@
+* {
+  font-family: "Roboto", sans-serif; }
+
+h3 {
+  font-size: 20px;
+  font-weight: bold; }
+
+h4 {
+  font-size: 14px;
+  font-weight: bold; }
+
+.body-container {
+  padding: 145px 358px; }
+
+hr {
+  border: 1px solid #00adee;
+  height: 1px;
+  margin-bottom: 31px; }
+
+.back-button {
+  left: 50px;
+  position: absolute;
+  top: 100px; }

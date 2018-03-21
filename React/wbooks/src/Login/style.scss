@@ -1,0 +1,37 @@
+@import "./../Components/app.scss";
+
+.login-container {
+  border: solid 1px;
+  display: flex;
+  flex-direction: column;
+  padding: 150px 72px;
+  width: 692px;
+}
+
+.login-back {
+  display: flex;
+  justify-content: center;
+}
+
+.form-label {
+  color: $grey-font;
+  font-size: $font-size-medium-small;
+  margin-bottom: 10px;
+}
+
+.form-input {
+  background: $grey;
+  height: 38px;
+  margin-bottom: 20px;
+  padding: 0 20px;
+  width: auto;
+}
+
+.form-button {
+  align-self: center;
+  background: $blue;
+  color: $white;
+  font-weight: bold;
+  height: 38px;
+  width: 175px;
+}

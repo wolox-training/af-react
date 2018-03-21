@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 import { withRouter } from 'react-router-dom';
 
 import loginActions from '../redux/login/actions';
 import localStorage from '../Services/LocalStorage';
-import history from '../Config/history';
 
 import './style.css';
 
-import Login from './layout';
+import SignUp from './layout';
 
-class LoginContainer extends Component {
+class SignUpContainer extends Component {
   componentWillMount() {
     if (localStorage.getSessionToken()) {
-      history.push('/dashboard');
+      this.props.dispatch(push('/dashboard'));
     }
   }
 
@@ -23,11 +23,11 @@ class LoginContainer extends Component {
   };
 
   render() {
-    return <Login onSubmit={this.handleSubmit} logState={this.props.logState} />;
+    return <SignUp onSubmit={this.handleSubmit} logState={this.props.logState} />;
   }
 }
 
-LoginContainer.propTypes = {
+SignUpContainer.propTypes = {
   logState: PropTypes.shape({
     loading: PropTypes.bool,
     loggedIn: PropTypes.bool,
@@ -37,4 +37,4 @@ LoginContainer.propTypes = {
 
 const mapStateToProps = state => ({ logState: state.login.logState });
 
-export default withRouter(connect(mapStateToProps)(LoginContainer));
+export default withRouter(connect(mapStateToProps)(SignUpContainer));

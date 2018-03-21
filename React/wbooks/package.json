@@ -5,6 +5,7 @@
   "dependencies": {
     "apisauce": "^0.14.3",
     "axios": "^0.18.0",
+    "dotenv": "^5.0.1",
     "eslint-config-react-app": "^2.1.0",
     "eslint-config-wolox": "^1.0.0",
     "eslint-loader": "1.9.0",

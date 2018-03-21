@@ -26,11 +26,11 @@ const renderField = ({ input, className, placeholder, type, meta: { touched, err
   </div>
 );
 
-function Login({ handleSubmit, logState }) {
+function SignUp({ handleSubmit, logState }) {
   return (
     <div className="body-container login-back">
       <Form className="login-container" onSubmit={handleSubmit}>
-        <h2 className="form-title">Log In</h2>
+        <h2 className="form-title">Sign Up</h2>
         <label htmlFor="email" className="form-label">
           Mail:
         </label>
@@ -61,7 +61,7 @@ function Login({ handleSubmit, logState }) {
   );
 }
 
-Login.propTypes = {
+SignUp.propTypes = {
   handleSubmit: PropTypes.func,
   logState: PropTypes.shape({
     loading: PropTypes.bool,
@@ -72,4 +72,4 @@ Login.propTypes = {
 
 export default reduxForm({
   form: 'loginForm'
-})(Login);
+})(SignUp);

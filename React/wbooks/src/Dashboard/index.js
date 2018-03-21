@@ -6,10 +6,17 @@ import { withRouter } from 'react-router-dom';
 
 import localStorage from '../Services/LocalStorage';
 import loginActions from '../redux/login/actions';
+import history from '../Config/history';
 
 import './style.css';
 
 class DashboardContainer extends Component {
+  componentWillMount() {
+    if (!localStorage.getSessionToken()) {
+      history.push('/login');
+    }
+  }
+
   render() {
     return (
       <div>

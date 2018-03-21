@@ -1,16 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import store from './redux/store';
+import history from './Config/history';
 import WBooks from './WBooks';
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <Router history={history}>
       <WBooks />
-    </BrowserRouter>
+    </Router>
   </Provider>,
   document.getElementById('root')
 );

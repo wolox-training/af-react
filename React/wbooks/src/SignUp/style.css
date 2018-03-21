@@ -84,14 +84,14 @@ li {
   color: #999;
   opacity: 1; }
 
-.login-container {
+.signup-container {
   border: solid 1px;
   display: flex;
   flex-direction: column;
   padding: 130px 72px;
   width: 692px; }
 
-.login-back {
+.signup-back {
   display: flex;
   justify-content: center; }
 

@@ -17,6 +17,7 @@ const passFormat = value =>
     : undefined;
 const email = value =>
   value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ? 'Mail invalido' : undefined;
+const nameFormat = value => (value && /[0-9]/.test(value) ? 'El campo no debe contener numeros' : undefined);
 
 const renderField = ({ input, className, placeholder, type, meta: { touched, error, warning } }) => (
   <div className="form-input-group">
@@ -26,11 +27,33 @@ const renderField = ({ input, className, placeholder, type, meta: { touched, err
   </div>
 );
 
-function SignUp({ handleSubmit, logState }) {
+function SignUp({ handleSubmit }) {
   return (
-    <div className="body-container login-back">
-      <Form className="login-container" onSubmit={handleSubmit}>
+    <div className="body-container signup-back">
+      <Form className="signup-container" onSubmit={handleSubmit}>
         <h2 className="form-title">Sign Up</h2>
+        <label htmlFor="email" className="form-label">
+          Nombre:
+        </label>
+        <Field
+          name="name"
+          component={renderField}
+          type="text"
+          className="form-input"
+          placeholder="Ingrese su nombre."
+          validate={[required, nameFormat]}
+        />
+        <label htmlFor="email" className="form-label">
+          Apellido:
+        </label>
+        <Field
+          name="lastname"
+          component={renderField}
+          type="text"
+          className="form-input"
+          placeholder="Ingrese su apellido."
+          validate={[required, nameFormat]}
+        />
         <label htmlFor="email" className="form-label">
           Mail:
         </label>
@@ -51,7 +74,7 @@ function SignUp({ handleSubmit, logState }) {
           type="password"
           className="form-input"
           placeholder="Ingrese su contraseña."
-          validate={[required, passLength]}
+          validate={[required, passLength, passFormat]}
         />
         <button className="form-button" type="submit">
           Log in
@@ -62,12 +85,7 @@ function SignUp({ handleSubmit, logState }) {
 }
 
 SignUp.propTypes = {
-  handleSubmit: PropTypes.func,
-  logState: PropTypes.shape({
-    loading: PropTypes.bool,
-    loggedIn: PropTypes.bool,
-    loginFail: PropTypes.bool
-  })
+  handleSubmit: PropTypes.func
 };
 
 export default reduxForm({

@@ -11,16 +11,20 @@ import BookDetail from './BookDetail';
 import LoginContainer from './Login';
 import SignupContainer from './Signup';
 import DashboardContainer from './Dashboard';
+import NavbarContainer from './Navbar';
 
 function WBooks() {
   return (
-    <Switch>
-      <Route exact path="/" component={HomeContainer} />
-      <Route path="/book/:id" component={BookDetail} />
-      <AnonymousRoute authed={isAuthenticated()} path="/login" component={LoginContainer} />
-      <AnonymousRoute authed={isAuthenticated()} path="/signup" component={SignupContainer} />
-      <PrivateRoute authed={isAuthenticated()} path="/dashboard" component={DashboardContainer} />
-    </Switch>
+    <div>
+      <NavbarContainer />
+      <Switch>
+        <Route exact path="/" component={HomeContainer} />
+        <Route path="/book/:id" component={BookDetail} />
+        <AnonymousRoute authed={isAuthenticated()} path="/login" component={LoginContainer} />
+        <AnonymousRoute authed={isAuthenticated()} path="/signup" component={SignupContainer} />
+        <PrivateRoute authed={isAuthenticated()} path="/dashboard" component={DashboardContainer} />
+      </Switch>
+    </div>
   );
 }
 

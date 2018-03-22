@@ -6,6 +6,7 @@ import { reducer as form } from 'redux-form';
 
 import { reducer as login } from './login/reducer';
 import { reducer as signup } from './signup/reducer';
+import { reducer as logout } from './logout/reducer';
 
 export const history = createHistory();
 
@@ -13,7 +14,8 @@ const reducers = combineReducers({
   form,
   router,
   login,
-  signup
+  signup,
+  logout
 });
 
 const middlewares = [thunk, routerMiddleware(history)];

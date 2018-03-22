@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
-import { push } from 'react-router-redux';
 import { connect } from 'react-redux';
 import './application.css';
 
+import isAuthenticated from './Utils/authentication';
+import PrivateRoute from './Components/PrivateRoute';
+import AnonymousRoute from './Components/AnonymousRoute';
 import HomeContainer from './Home/';
 import BookDetail from './BookDetail';
 import LoginContainer from './Login';
-import SignUpContainer from './SignUp';
 import DashboardContainer from './Dashboard';
 
 function WBooks() {
@@ -15,9 +16,8 @@ function WBooks() {
     <Switch>
       <Route exact path="/" component={HomeContainer} />
       <Route path="/book/:id" component={BookDetail} />
-      <Route path="/login" component={LoginContainer} />
-      <Route path="/signup" component={SignUpContainer} />
-      <Route path="/dashboard" component={DashboardContainer} />
+      <AnonymousRoute authed={isAuthenticated()} path="/login" component={LoginContainer} />
+      <PrivateRoute authed={isAuthenticated()} path="/dashboard" component={DashboardContainer} />
     </Switch>
   );
 }

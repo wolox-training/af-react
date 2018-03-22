@@ -2,41 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Field, reduxForm } from 'redux-form';
 
-import './style.css';
-
-const required = value => (value ? undefined : 'Requerido');
-const maxPassLen = 52;
-const minPassLen = 8;
-const passLength = value =>
-  value && (value.length > maxPassLen || value.length < minPassLen)
-    ? `Debe tener entre ${minPassLen} y ${maxPassLen} caracteres`
-    : undefined;
-const passFormat = value =>
-  value && !(/[a-zA-Z]/.test(value) && /[0-9]/.test(value))
-    ? 'Debe contener al menos una letra y un numero'
-    : undefined;
-const email = value =>
-  value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ? 'Mail invalido' : undefined;
-
-const renderField = ({ input, className, placeholder, type, meta: { touched, error, warning } }) => (
-  <div className="form-input-group">
-    <input {...input} placeholder={placeholder} type={type} className={className} />
-    {touched &&
-      ((error && <span className="input-error">{error}</span>) || (warning && <span>{warning}</span>))}
-  </div>
-);
+import FormInput from '../Components/FormInput';
+import { email, passLength, required } from '../Utils/inputValidations';
+import '../Components/forms.css';
 
 function Login({ handleSubmit, logState }) {
   return (
-    <div className="body-container login-back">
-      <Form className="login-container" onSubmit={handleSubmit}>
+    <div className="body-container auth-back">
+      <Form className="auth-container" onSubmit={handleSubmit}>
         <h2 className="form-title">Log In</h2>
         <label htmlFor="email" className="form-label">
           Mail:
         </label>
         <Field
           name="email"
-          component={renderField}
+          component={FormInput}
           type="email"
           className="form-input"
           placeholder="Ingrese su mail."
@@ -47,7 +27,7 @@ function Login({ handleSubmit, logState }) {
         </label>
         <Field
           name="password"
-          component={renderField}
+          component={FormInput}
           type="password"
           className="form-input"
           placeholder="Ingrese su contraseña."

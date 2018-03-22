@@ -3,7 +3,7 @@ import { create } from 'apisauce';
 require('dotenv').config();
 
 const api = create({
-  baseURL: 'https://wbooks-api-stage.herokuapp.com/api/v1/',
+  baseURL: process.env.REACT_APP_BASE_URL,
   headers: { Accept: 'application/json' },
   timeout: 7000
 });

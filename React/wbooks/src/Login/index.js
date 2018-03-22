@@ -4,20 +4,10 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import loginActions from '../redux/login/actions';
-import localStorage from '../Services/LocalStorage';
-import history from '../Config/history';
-
-import './style.css';
 
 import Login from './layout';
 
 class LoginContainer extends Component {
-  componentWillMount() {
-    if (localStorage.getSessionToken()) {
-      history.push('/dashboard');
-    }
-  }
-
   handleSubmit = data => {
     this.props.dispatch(loginActions.login(data.email, data.password));
   };

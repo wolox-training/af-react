@@ -3,19 +3,23 @@ import history from '../../Config/history';
 import UserService from '../../Services/UserService';
 import localStorage from '../../Services/LocalStorage';
 
-export const userActions = { login: 'LOGIN', loginSuccess: 'LOGINSUCCESS', loginFailure: 'LOGINFAILURE' };
+export const userActions = {
+  signup: 'SIGNUP',
+  signupSuccess: 'SIGNUPSUCCESS',
+  signupFailure: 'SIGNUPFAILURE'
+};
 
 export default {
-  login: (email, password) => async dispatch => {
-    dispatch({ type: userActions.login });
-    const response = await UserService.login(email, password);
+  signup: user => async dispatch => {
+    dispatch({ type: userActions.signup });
+    const response = await UserService.signup(user);
     if (response.ok) {
-      dispatch({ type: userActions.loginSuccess });
+      dispatch({ type: userActions.signupSuccess });
       localStorage.setSessionToken(response.data.access_token);
       api.setHeader('Authorization', response.data.access_token);
       history.push('/dashboard');
     } else {
-      dispatch({ type: userActions.loginFailure });
+      dispatch({ type: userActions.signupFailure });
     }
   }
 };

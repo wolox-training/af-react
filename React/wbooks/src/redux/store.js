@@ -5,13 +5,15 @@ import createHistory from 'history/createBrowserHistory';
 import { reducer as form } from 'redux-form';
 
 import { reducer as login } from './login/reducer';
+import { reducer as signup } from './signup/reducer';
 
 export const history = createHistory();
 
 const reducers = combineReducers({
   form,
   router,
-  login
+  login,
+  signup
 });
 
 const middlewares = [thunk, routerMiddleware(history)];

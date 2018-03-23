@@ -14,10 +14,10 @@ import DashboardContainer from './Dashboard';
 function WBooks() {
   return (
     <Switch>
-      <Route exact path="/" component={HomeContainer} />
-      <Route path="/book/:id" component={BookDetail} />
+      <PrivateRoute authed={isAuthenticated()} path="/book/:id" component={BookDetail} />
       <AnonymousRoute authed={isAuthenticated()} path="/login" component={LoginContainer} />
       <PrivateRoute authed={isAuthenticated()} path="/dashboard" component={DashboardContainer} />
+      <PrivateRoute authed={isAuthenticated()} path="/" component={HomeContainer} />
     </Switch>
   );
 }

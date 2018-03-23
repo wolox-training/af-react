@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Field, reduxForm } from 'redux-form';
 
-import FormInput from '../Components/FormInput';
+import FormInput from '../Components/FormInput/FormInput';
 import { email, passLength, required } from '../Utils/inputValidations';
-import '../Components/forms.css';
+import '../Components/FormInput/style.css';
 
 function Login({ handleSubmit, logState }) {
   return (

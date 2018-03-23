@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './forms.css';
+import './style.css';
 
 function FormInput({ input, className, placeholder, type, meta: { touched, error, warning } }) {
   return (

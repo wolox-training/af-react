@@ -1,0 +1,55 @@
+@import "../app.scss";
+
+.auth-container {
+  border: solid 1px;
+  display: flex;
+  flex-direction: column;
+  padding: 130px 72px;
+  width: 692px;
+}
+
+.auth-back {
+  display: flex;
+  justify-content: center;
+}
+
+.form-title {
+  align-self: center;
+  font-size: $font-size-big;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.form-label {
+  color: $grey-font;
+  font-size: $font-size-medium-small;
+  margin-bottom: 10px;
+}
+
+.form-input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-input {
+  background: $grey;
+  height: 38px;
+  margin-bottom: 20px;
+  padding: 0 20px;
+  width: auto;
+}
+
+.input-error {
+  color: $red;
+  margin-bottom: 20px;
+  padding: 0 20px;
+}
+
+.form-button {
+  align-self: center;
+  background: $blue;
+  color: $white;
+  font-weight: bold;
+  height: 38px;
+  width: 175px;
+}

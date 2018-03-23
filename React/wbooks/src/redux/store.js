@@ -4,18 +4,14 @@ import { routerReducer as router, routerMiddleware } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 import { reducer as form } from 'redux-form';
 
-import { reducer as login } from './login/reducer';
-import { reducer as signup } from './signup/reducer';
-import { reducer as logout } from './logout/reducer';
+import { reducer as auth } from './auth/reducer';
 
 export const history = createHistory();
 
 const reducers = combineReducers({
   form,
   router,
-  login,
-  signup,
-  logout
+  auth
 });
 
 const middlewares = [thunk, routerMiddleware(history)];

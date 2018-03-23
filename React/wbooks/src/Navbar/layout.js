@@ -11,7 +11,7 @@ import './style.css';
 import Menu from './Components/Menu';
 import Notifications from './Components/Notifications';
 
-function NavBar({ logoutHandler, isMenuDisplayed, areNotificationsDisplayed, toogleNotif, toogleMenu }) {
+function NavBar({ logoutHandler, isMenuDisplayed, areNotificationsDisplayed, onToogleNotif, onToogleMenu }) {
   const menu = isMenuDisplayed ? <Menu logoutHandler={logoutHandler} /> : undefined;
   const notifications = areNotificationsDisplayed ? <Notifications /> : undefined;
   return (
@@ -20,11 +20,11 @@ function NavBar({ logoutHandler, isMenuDisplayed, areNotificationsDisplayed, too
         <img src={logo} alt="logo" className="wolox-logo" />
       </Link>
       <nav>
-        <button onClick={toogleNotif}>
+        <button onClick={onToogleNotif}>
           <img src={notificationsImg} alt="notifications" className="notifications-img" />
         </button>
         <img src={addBookImg} alt="addBook" className="addBook-img" />
-        <button onClick={toogleMenu}>
+        <button onClick={onToogleMenu}>
           <img src={profileImg} alt="profile" className="profile-img" />
         </button>
         {menu}
@@ -35,11 +35,11 @@ function NavBar({ logoutHandler, isMenuDisplayed, areNotificationsDisplayed, too
 }
 
 NavBar.propTypes = {
-  logoutHandler: PropTypes.func,
-  toogleNotif: PropTypes.func,
-  toogleMenu: PropTypes.func,
-  isMenuDisplayed: PropTypes.bool,
-  areNotificationsDisplayed: PropTypes.bool
+  logoutHandler: PropTypes.func.isRequired,
+  onToogleNotif: PropTypes.func.isRequired,
+  onToogleMenu: PropTypes.func.isRequired,
+  isMenuDisplayed: PropTypes.bool.isRequired,
+  areNotificationsDisplayed: PropTypes.bool.isRequired
 };
 
 export default NavBar;

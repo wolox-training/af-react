@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Field, reduxForm } from 'redux-form';
+import { Link } from 'react-router-dom';
 
 import FormInput from '../Components/FormInput';
 import { email, passLength, required } from '../Utils/inputValidations';
 import '../Components/forms.css';
 
-function Login({ handleSubmit, logState }) {
+function Login({ handleSubmit }) {
   return (
     <div className="body-container auth-back">
       <Form className="auth-container" onSubmit={handleSubmit}>
@@ -36,18 +37,19 @@ function Login({ handleSubmit, logState }) {
         <button className="form-button" type="submit">
           Log in
         </button>
+        <span>
+          No tenes cuenta?{' '}
+          <Link className="link" to="/signup">
+            Registrate
+          </Link>
+        </span>
       </Form>
     </div>
   );
 }
 
 Login.propTypes = {
-  handleSubmit: PropTypes.func,
-  logState: PropTypes.shape({
-    loading: PropTypes.bool,
-    loggedIn: PropTypes.bool,
-    loginFail: PropTypes.bool
-  })
+  handleSubmit: PropTypes.func
 };
 
 export default reduxForm({

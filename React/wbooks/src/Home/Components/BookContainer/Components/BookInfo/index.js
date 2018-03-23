@@ -8,7 +8,7 @@ import './style.css';
 function BookInfo({ author, title, imageUrl }) {
   return (
     <div className="book-info">
-      <BookCover imageUrl={imageUrl} imgStyle="book-image" />
+      <BookCover imageUrl={imageUrl} imgStyle="book-image" title={title} />
       <h4 className="book-title">{title}</h4>
       <span className="book-author">{author}</span>
     </div>

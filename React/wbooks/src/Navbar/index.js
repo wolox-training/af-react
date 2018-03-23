@@ -2,23 +2,23 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import logoutActions from '../redux/logout/actions';
+import authActions from '../redux/auth/actions';
 
 import NavBar from './layout';
 
 class NavbarContainer extends Component {
   state = { isMenuDisplayed: false, areNotificationsDisplayed: false };
 
-  toogleMenu = () => {
+  handleToogleMenu = () => {
     this.setState({ isMenuDisplayed: !this.state.isMenuDisplayed });
   };
 
-  toogleNotif = () => {
+  handleToogleNotif = () => {
     this.setState({ areNotificationsDisplayed: !this.state.areNotificationsDisplayed });
   };
 
   logoutHandler = () => {
-    this.props.dispatch(logoutActions.logout());
+    this.props.dispatch(authActions.logout());
   };
 
   render() {
@@ -27,13 +27,13 @@ class NavbarContainer extends Component {
         logoutHandler={this.logoutHandler}
         isMenuDisplayed={this.state.isMenuDisplayed}
         areNotificationsDisplayed={this.state.areNotificationsDisplayed}
-        toogleNotif={this.toogleNotif}
-        toogleMenu={this.toogleMenu}
+        onToogleNotif={this.handleToogleNotif}
+        onToogleMenu={this.handleToogleMenu}
       />
     );
   }
 }
 
-const mapStateToProps = state => ({ logState: state.logout.logState });
+const mapStateToProps = state => ({ logState: state.auth.logState });
 
 export default withRouter(connect(mapStateToProps)(NavbarContainer));

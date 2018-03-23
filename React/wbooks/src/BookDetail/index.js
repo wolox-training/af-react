@@ -1,37 +1,56 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import { BOOKS } from '../books_json';
+import { bookActions } from '../redux/books/actions';
 
 import BookDetailInfo from './Components/BookDetailInfo';
 import BookSuggestions from './Components/BookSuggestions';
 import CommentSection from './Components/CommentSection';
 
-function BookDetail({ match }) {
-  const bookId = match.params.id;
-  const book = BOOKS.find(b => b.id == bookId);
-  const suggestions = BOOKS.filter(b => b.genre == book.genre);
+class BookDetail extends Component {
+  componentWillMount() {
+    this.props.dispatch(bookActions.bookDetail(this.props.match.params.id));
+  }
+  render() {
+    const bookId = this.props.match.params.id;
+    const book = this.props.items && this.props.items.data ? this.props.items.data : null;
+    const suggestions = book ? (
+      <BookSuggestions suggestions={BOOKS.filter(b => b.genre == book.genre)} />
+    ) : null;
 
-  return (
-    <div>
-      <div className="body-container">
-        <Link to="/" className="back-button">
-          &lt; Volver
-        </Link>
-        <BookDetailInfo
-          imageUrl={book.image_url}
-          title={book.title}
-          author={book.author}
-          year={book.year}
-          genre={book.genre}
-        />
-        <hr />
-        <BookSuggestions suggestions={suggestions} />
-        <hr />
-        <CommentSection />
+    const bookComponent = book ? (
+      <BookDetailInfo
+        imageUrl={book.image_url}
+        title={book.title}
+        author={book.author}
+        year={book.year}
+        genre={book.genre}
+      />
+    ) : null;
+
+    console.log(book);
+    return (
+      <div>
+        <div className="body-container">
+          <Link to="/" className="back-button">
+            &lt; Volver
+          </Link>
+          {bookComponent}
+          <hr />
+          {suggestions}
+          <hr />
+          <CommentSection />
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
+const mapStateToProps = state => ({
+  items: state.books.items,
+  loading: state.books.loading,
+  error: state.books.error
+});
 
-export default BookDetail;
+export default withRouter(connect(mapStateToProps)(BookDetail));

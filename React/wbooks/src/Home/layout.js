@@ -7,7 +7,7 @@ import BookContainer from './Components/BookContainer';
 import BookSearch from './Components/BookSearch';
 import BookFilterContainer from './Components/BookFilter';
 
-function Home({ filterOption, searchText, handleFilterOptionChange, handleSearchTextChange }) {
+function Home({ filterOption, searchText, handleFilterOptionChange, handleSearchTextChange, books }) {
   return (
     <div className="body-container">
       <BookFilterContainer
@@ -16,7 +16,7 @@ function Home({ filterOption, searchText, handleFilterOptionChange, handleSearch
         onFilterOptionChange={handleFilterOptionChange}
       />
       <BookSearch searchText={searchText} onSearchTextChange={handleSearchTextChange} />
-      <BookContainer books={BOOKS} searchText={searchText} filterOption={filterOption} />
+      <BookContainer books={books} searchText={searchText} filterOption={filterOption} />
     </div>
   );
 }

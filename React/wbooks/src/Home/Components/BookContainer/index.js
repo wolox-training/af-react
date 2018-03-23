@@ -14,7 +14,7 @@ function BookContainer({ searchText, filterOption, books }) {
         )
         .map(book => (
           <Link to={`/book/${book.id}`} key={book.id}>
-            <BookInfo imageUrl={book.imageUrl} title={book.title} author={book.author} />
+            <BookInfo imageUrl={book.image_url} title={book.title} author={book.author} />
           </Link>
         ))}
     </div>

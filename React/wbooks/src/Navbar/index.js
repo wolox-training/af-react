@@ -25,8 +25,8 @@ class NavbarContainer extends Component {
     return (
       <NavBar
         logoutHandler={this.logoutHandler}
-        isMenuDisplayed={this.isMenuDisplayed}
-        areNotificationsDisplayed={this.areNotificationsDisplayed}
+        isMenuDisplayed={this.state.isMenuDisplayed}
+        areNotificationsDisplayed={this.state.areNotificationsDisplayed}
         toogleNotif={this.toogleNotif}
         toogleMenu={this.toogleMenu}
       />

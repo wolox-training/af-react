@@ -1,34 +1,21 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { BOOKS } from '../books_json';
-import { bookDetailAction } from '../redux/bookDetail/actions';
+import ActionCreators from '../redux/books/actions';
 
 import BookDetailInfo from './Components/BookDetailInfo';
 import BookSuggestions from './Components/BookSuggestions';
 import CommentSection from './Components/CommentSection';
 
 class BookDetail extends Component {
-  componentWillMount() {
-    this.props.dispatch(bookDetailAction.bookDetail(this.props.match.params.id));
+  componentDidMount() {
+    this.props.dispatch(ActionCreators.bookDetail(this.props.match.params.id));
   }
   render() {
-    const bookId = this.props.match.params.id;
-    const book = this.props.items && this.props.items.data ? this.props.items.data : null;
-    const suggestions = book ? (
-      <BookSuggestions suggestions={BOOKS.filter(b => b.genre == book.genre)} />
-    ) : null;
-
-    const bookComponent = book ? (
-      <BookDetailInfo
-        imageUrl={book.image_url}
-        title={book.title}
-        author={book.author}
-        year={book.year}
-        genre={book.genre}
-      />
-    ) : null;
+    const book = this.props.items ? this.props.items : null;
 
     return (
       <div>
@@ -36,9 +23,19 @@ class BookDetail extends Component {
           <Link to="/" className="back-button">
             &lt; Volver
           </Link>
-          {bookComponent}
-          <hr />
-          {suggestions}
+          {book && (
+            <div>
+              <BookDetailInfo
+                imageUrl={book.image_url}
+                title={book.title}
+                author={book.author}
+                year={book.year}
+                genre={book.genre}
+              />
+              <hr />
+              <BookSuggestions suggestions={BOOKS.filter(b => b.genre === book.genre)} />
+            </div>
+          )}
           <hr />
           <CommentSection />
         </div>
@@ -46,10 +43,15 @@ class BookDetail extends Component {
     );
   }
 }
+
+BookDetail.propTypes = {
+  items: PropTypes.arrayOf
+};
+
 const mapStateToProps = state => ({
-  items: state.bookDetail.items,
-  loading: state.bookDetail.loading,
-  error: state.bookDetail.error
+  items: state.books.bookDetail,
+  loading: state.books.loadingDetail,
+  error: state.books.errorDetail
 });
 
-export default withRouter(connect(mapStateToProps)(BookDetail));
+export default connect(mapStateToProps)(BookDetail);

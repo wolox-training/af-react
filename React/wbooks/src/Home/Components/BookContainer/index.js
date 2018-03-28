@@ -1,24 +1,35 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import ActionCreators from '../../../redux/books/actions';
 
 import BookInfo from './Components/BookInfo';
 
-function BookContainer({ searchText, filterOption, books }) {
-  return (
-    <div className="book-container">
-      {books
-        .filter(
-          book =>
-            !book[filterOption.toLowerCase()] || book[filterOption.toLowerCase()].indexOf(searchText) !== -1
-        )
-        .map(book => (
-          <Link to={`/book/${book.id}`} key={book.id}>
-            <BookInfo imageUrl={book.image_url} title={book.title} author={book.author} />
-          </Link>
-        ))}
-    </div>
-  );
+class BookContainer extends Component {
+  componentDidMount() {
+    this.props.dispatch(ActionCreators.books());
+  }
+
+  render() {
+    const { searchText, filterOption } = this.props;
+    const books = this.props.books ? this.props.books : [];
+    return (
+      <div className="book-container">
+        {books
+          .filter(
+            book =>
+              !book[filterOption.toLowerCase()] || book[filterOption.toLowerCase()].indexOf(searchText) !== -1
+          )
+          .map(book => (
+            <Link to={`/book/${book.id}`} key={book.id}>
+              <BookInfo imageUrl={book.image_url} title={book.title} author={book.author} />
+            </Link>
+          ))}
+      </div>
+    );
+  }
 }
 
 const BookPropType = {
@@ -37,4 +48,10 @@ BookContainer.propTypes = {
   books: PropTypes.arrayOf(PropTypes.shape(BookPropType))
 };
 
-export default BookContainer;
+const mapStateToProps = state => ({
+  books: state.books.books,
+  loading: state.books.loadingBooks,
+  error: state.books.errorBooks
+});
+
+export default connect(mapStateToProps)(BookContainer);

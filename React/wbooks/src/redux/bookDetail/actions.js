@@ -1,9 +1,9 @@
 import UserService from '../../Services/UserService';
 
 export const fetchActions = {
-  FETCH_BEGIN: 'FETCH_BEGIN',
-  FETCH_SUCCESS: 'FETCH_SUCCESS',
-  FETCH_FAILURE: 'FETCH_FAILURE'
+  FETCH_BEGIN: '@@BOOK_DETAIL/FETCH_BEGIN',
+  FETCH_SUCCESS: '@@BOOK_DETAIL/FETCH_SUCCESS',
+  FETCH_FAILURE: '@@BOOK_DETAIL/FETCH_FAILURE'
 };
 
 export const fetchBegin = () => ({

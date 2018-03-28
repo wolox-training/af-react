@@ -22,9 +22,7 @@ class HomeContainer extends Component {
   };
 
   render() {
-    console.log('home');
     const books = this.props.items && this.props.items.data instanceof Array ? this.props.items.data : [];
-    console.log(books);
     return (
       <Home
         books={books}

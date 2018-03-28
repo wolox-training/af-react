@@ -20,9 +20,6 @@ class BookDetail extends Component {
       <BookSuggestions suggestions={BOOKS.filter(b => b.genre == book.genre)} />
     ) : null;
 
-    console.log('detail');
-    console.log(book);
-
     const bookComponent = book ? (
       <BookDetailInfo
         imageUrl={book.image_url}

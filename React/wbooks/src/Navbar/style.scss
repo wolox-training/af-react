@@ -1,0 +1,44 @@
+@import "../Components/app.scss";
+
+.navbar {
+  align-items: center;
+  background: $white;
+  box-shadow: 0 0 20px 0 $grey;
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  left: 0;
+  position: fixed;
+  padding: 0 40px;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.wolox-logo {
+  height: 42px;
+  width: 180px;
+}
+
+.notifications-img {
+  height: 40px;
+  margin-right: 20px;
+  width: 40px;
+}
+
+.addBook-img {
+  height: 40px;
+  margin-right: 20px;
+  width: 40px;
+}
+
+.profile-img {
+  border-radius: 20px;
+  height: 40px;
+  width: 40px;
+}
+
+.dropdown {
+  width: 40px;
+  margin: 0;
+}

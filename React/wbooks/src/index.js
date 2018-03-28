@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 import history from './Config/history';
 import WBooks from './WBooks';
+import Navbar from './Navbar';
 
 ReactDOM.render(
   <Provider store={store}>

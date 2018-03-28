@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import signupActions from '../redux/signup/actions';
+import authActions from '../redux/auth/actions';
 
 import Signup from './layout';
 
@@ -15,7 +15,7 @@ class SignupContainer extends Component {
       last_name: data.lastname,
       locale: 'en'
     };
-    this.props.dispatch(signupActions.signup(user));
+    this.props.dispatch(authActions.signup(user));
   };
 
   render() {
@@ -23,6 +23,6 @@ class SignupContainer extends Component {
   }
 }
 
-const mapStateToProps = state => ({ logState: state.login.logState });
+const mapStateToProps = state => ({ logState: state.auth.logState });
 
 export default withRouter(connect(mapStateToProps)(SignupContainer));

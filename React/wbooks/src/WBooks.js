@@ -9,6 +9,7 @@ import AnonymousRoute from './Components/AnonymousRoute';
 import HomeContainer from './Home/';
 import BookDetail from './BookDetail';
 import LoginContainer from './Login';
+import SignupContainer from './Signup';
 import DashboardContainer from './Dashboard';
 
 function WBooks() {
@@ -16,6 +17,7 @@ function WBooks() {
     <Switch>
       <PrivateRoute authed={isAuthenticated()} path="/book/:id" component={BookDetail} />
       <AnonymousRoute authed={isAuthenticated()} path="/login" component={LoginContainer} />
+      <AnonymousRoute authed={isAuthenticated()} path="/signup" component={SignupContainer} />
       <PrivateRoute authed={isAuthenticated()} path="/dashboard" component={DashboardContainer} />
       <PrivateRoute authed={isAuthenticated()} path="/" component={HomeContainer} />
     </Switch>

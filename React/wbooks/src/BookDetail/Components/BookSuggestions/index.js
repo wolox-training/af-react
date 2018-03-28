@@ -9,7 +9,12 @@ function BookSuggestions({ suggestions }) {
       <h3 className="green-title">Sugerencias</h3>
       <div className="suggestion-container">
         {suggestions.map(suggestion => (
-          <BookCover key={suggestion.id} imageUrl={suggestion.imageUrl} imgStyle="suggestion-img" />
+          <BookCover
+            key={suggestion.id}
+            imageUrl={suggestion.imageUrl}
+            imgStyle="suggestion-img"
+            title={suggestion.title}
+          />
         ))}
       </div>
     </div>

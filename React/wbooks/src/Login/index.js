@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import loginActions from '../redux/login/actions';
+import authActions from '../redux/auth/actions';
 
 import Login from './layout';
 
 class LoginContainer extends Component {
   handleSubmit = data => {
-    this.props.dispatch(loginActions.login(data.email, data.password));
+    this.props.dispatch(authActions.login(data.email, data.password));
   };
 
   render() {
@@ -25,6 +25,6 @@ LoginContainer.propTypes = {
   })
 };
 
-const mapStateToProps = state => ({ logState: state.login.logState });
+const mapStateToProps = state => ({ logState: state.auth.logState });
 
 export default withRouter(connect(mapStateToProps)(LoginContainer));

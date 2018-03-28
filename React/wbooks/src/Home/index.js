@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { bookActions } from '../redux/books/actions';
+import { allBooksAction } from '../redux/allBooks/actions';
 
 import Home from './layout';
 
@@ -10,7 +10,7 @@ class HomeContainer extends Component {
   state = { searchText: '', filterOption: 'placeholder' };
 
   componentWillMount() {
-    this.props.dispatch(bookActions.books());
+    this.props.dispatch(allBooksAction.books());
   }
 
   handleSearchTextChange = searchText => {
@@ -22,7 +22,8 @@ class HomeContainer extends Component {
   };
 
   render() {
-    const books = this.props.items && this.props.items.data ? this.props.items.data : [];
+    console.log('home');
+    const books = this.props.items && this.props.items.data instanceof Array ? this.props.items.data : [];
     console.log(books);
     return (
       <Home
@@ -37,9 +38,9 @@ class HomeContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  items: state.books.items,
-  loading: state.books.loading,
-  error: state.books.error
+  items: state.allBooks.books,
+  loading: state.allBooks.loading,
+  error: state.allBooks.error
 });
 
 export default withRouter(connect(mapStateToProps)(HomeContainer));

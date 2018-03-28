@@ -20,28 +20,7 @@ export const fetchError = error => ({
   payload: { error }
 });
 
-const fetch = service => async dispatch => {
-  dispatch(fetchBegin());
-  const response = await service;
-  if (response.ok) {
-    dispatch(fetchSuccess(response.data));
-    return response.data;
-  }
-  dispatch(fetchError(response.problem));
-  return null;
-};
-
-export const bookActions = {
-  books: () => async dispatch => {
-    dispatch(fetchBegin());
-    const response = await UserService.books();
-    if (response.ok) {
-      dispatch(fetchSuccess(response.data));
-      return response.data;
-    }
-    dispatch(fetchError(response.problem));
-    return null;
-  },
+export const bookDetailAction = {
   bookDetail: id => async dispatch => {
     dispatch(fetchBegin());
     const response = await UserService.bookDetail(id);

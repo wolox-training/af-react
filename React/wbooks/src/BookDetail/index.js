@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { BOOKS } from '../books_json';
-import { bookActions } from '../redux/books/actions';
+import { bookDetailAction } from '../redux/bookDetail/actions';
 
 import BookDetailInfo from './Components/BookDetailInfo';
 import BookSuggestions from './Components/BookSuggestions';
@@ -11,7 +11,7 @@ import CommentSection from './Components/CommentSection';
 
 class BookDetail extends Component {
   componentWillMount() {
-    this.props.dispatch(bookActions.bookDetail(this.props.match.params.id));
+    this.props.dispatch(bookDetailAction.bookDetail(this.props.match.params.id));
   }
   render() {
     const bookId = this.props.match.params.id;
@@ -19,6 +19,9 @@ class BookDetail extends Component {
     const suggestions = book ? (
       <BookSuggestions suggestions={BOOKS.filter(b => b.genre == book.genre)} />
     ) : null;
+
+    console.log('detail');
+    console.log(book);
 
     const bookComponent = book ? (
       <BookDetailInfo
@@ -30,7 +33,6 @@ class BookDetail extends Component {
       />
     ) : null;
 
-    console.log(book);
     return (
       <div>
         <div className="body-container">
@@ -48,9 +50,9 @@ class BookDetail extends Component {
   }
 }
 const mapStateToProps = state => ({
-  items: state.books.items,
-  loading: state.books.loading,
-  error: state.books.error
+  items: state.bookDetail.items,
+  loading: state.bookDetail.loading,
+  error: state.bookDetail.error
 });
 
 export default withRouter(connect(mapStateToProps)(BookDetail));

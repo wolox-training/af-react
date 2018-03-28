@@ -5,7 +5,8 @@ import createHistory from 'history/createBrowserHistory';
 import { reducer as form } from 'redux-form';
 
 import { reducer as auth } from './auth/reducer';
-import { reducer as books } from './books/reducer';
+import { reducer as allBooks } from './allBooks/reducer';
+import { reducer as bookDetail } from './bookDetail/reducer';
 
 export const history = createHistory();
 
@@ -13,7 +14,8 @@ const reducers = combineReducers({
   form,
   router,
   auth,
-  books
+  allBooks,
+  bookDetail
 });
 
 const middlewares = [thunk, routerMiddleware(history)];

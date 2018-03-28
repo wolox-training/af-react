@@ -48,9 +48,7 @@ export function reducer(state = initialState, action) {
       return {
         ...state,
         logState: {
-          logout: true,
-          signing: false,
-          signupfail: false
+          logout: true
         }
       };
     }
@@ -58,7 +56,6 @@ export function reducer(state = initialState, action) {
       return {
         ...state,
         signState: {
-          logout: false,
           signing: true,
           signupfail: false
         }
@@ -68,7 +65,6 @@ export function reducer(state = initialState, action) {
       return {
         ...state,
         signState: {
-          logout: false,
           signing: false,
           signupfail: true
         }
@@ -78,7 +74,6 @@ export function reducer(state = initialState, action) {
       return {
         ...state,
         signState: {
-          logout: false,
           signing: false,
           signupfail: false
         }

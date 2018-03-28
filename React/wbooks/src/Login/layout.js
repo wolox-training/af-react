@@ -49,7 +49,7 @@ function Login({ handleSubmit }) {
 }
 
 Login.propTypes = {
-  handleSubmit: PropTypes.func
+  handleSubmit: PropTypes.func.isRequired
 };
 
 export default reduxForm({

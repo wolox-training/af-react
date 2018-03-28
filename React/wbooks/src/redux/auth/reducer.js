@@ -20,10 +20,7 @@ export function reducer(state = initialState, action) {
         logState: {
           logging: true,
           loggedIn: false,
-          loginFail: false,
-          logout: false,
-          signing: false,
-          signupfail: false
+          loginFail: false
         }
       };
     }
@@ -33,10 +30,7 @@ export function reducer(state = initialState, action) {
         logState: {
           logging: false,
           loggedIn: false,
-          loginFail: true,
-          logout: false,
-          signing: false,
-          signupfail: false
+          loginFail: true
         }
       };
     }
@@ -46,10 +40,7 @@ export function reducer(state = initialState, action) {
         logState: {
           logging: true,
           loggedIn: true,
-          loginFail: false,
-          logout: false,
-          signing: false,
-          signupfail: false
+          loginFail: false
         }
       };
     }
@@ -57,9 +48,6 @@ export function reducer(state = initialState, action) {
       return {
         ...state,
         logState: {
-          logging: false,
-          loggedIn: false,
-          loginFail: false,
           logout: true,
           signing: false,
           signupfail: false
@@ -70,9 +58,6 @@ export function reducer(state = initialState, action) {
       return {
         ...state,
         signState: {
-          logging: false,
-          loggedIn: false,
-          loginFail: false,
           logout: false,
           signing: true,
           signupfail: false
@@ -83,9 +68,6 @@ export function reducer(state = initialState, action) {
       return {
         ...state,
         signState: {
-          logging: false,
-          loggedIn: false,
-          loginFail: false,
           logout: false,
           signing: false,
           signupfail: true
@@ -96,9 +78,6 @@ export function reducer(state = initialState, action) {
       return {
         ...state,
         signState: {
-          logging: false,
-          loggedIn: false,
-          loginFail: false,
           logout: false,
           signing: false,
           signupfail: false

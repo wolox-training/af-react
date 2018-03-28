@@ -12,8 +12,8 @@ import Menu from './Components/Menu';
 import Notifications from './Components/Notifications';
 
 function NavBar({ logoutHandler, isMenuDisplayed, areNotificationsDisplayed, onToogleNotif, onToogleMenu }) {
-  const menu = isMenuDisplayed ? <Menu logoutHandler={logoutHandler} /> : undefined;
-  const notifications = areNotificationsDisplayed ? <Notifications /> : undefined;
+  const menu = isMenuDisplayed ? <Menu logoutHandler={logoutHandler} /> : null;
+  const notifications = areNotificationsDisplayed ? <Notifications /> : null;
   return (
     <header className="navbar">
       <Link to="/">

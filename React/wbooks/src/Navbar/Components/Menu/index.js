@@ -15,7 +15,7 @@ function Menu({ logoutHandler }) {
 }
 
 Menu.propTypes = {
-  logoutHandler: PropTypes.func
+  logoutHandler: PropTypes.func.isRequired
 };
 
 export default Menu;

@@ -6,14 +6,14 @@ import UserService from '../../Services/UserService';
 export const authActions = {
   logout: 'LOGOUT',
   login: 'LOGIN',
-  loginSuccess: 'LOGINSUCCESS',
-  loginFailure: 'LOGINFAILURE',
+  loginSuccess: 'LOGIN_SUCCESS',
+  loginFailure: 'LOGIN_FAILURE',
   signup: 'SIGNUP',
-  signupSuccess: 'SIGNUPSUCCESS',
-  signupFailure: 'SIGNUPFAILURE'
+  signupSuccess: 'SIGNUP_SUCCESS',
+  signupFailure: 'SIGNUP_FAILURE'
 };
 
-export default {
+const ActionCreators = {
   logout: () => {
     localStorage.removeSessionToken();
     api.setHeader('Authorization', '');
@@ -45,3 +45,5 @@ export default {
     }
   }
 };
+
+export default ActionCreators;

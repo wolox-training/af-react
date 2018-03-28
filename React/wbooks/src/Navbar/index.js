@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import authActions from '../redux/auth/actions';
@@ -36,4 +35,4 @@ class NavbarContainer extends Component {
 
 const mapStateToProps = state => ({ logState: state.auth.logState });
 
-export default withRouter(connect(mapStateToProps)(NavbarContainer));
+export default connect(mapStateToProps)(NavbarContainer);

@@ -18,11 +18,11 @@ function WBooks() {
     <div>
       <NavbarContainer />
       <Switch>
-        <Route exact path="/" component={HomeContainer} />
-        <Route path="/book/:id" component={BookDetail} />
         <AnonymousRoute authed={isAuthenticated()} path="/login" component={LoginContainer} />
         <AnonymousRoute authed={isAuthenticated()} path="/signup" component={SignupContainer} />
         <PrivateRoute authed={isAuthenticated()} path="/dashboard" component={DashboardContainer} />
+        <PrivateRoute authed={isAuthenticated()} path="/book/:id" component={BookDetail} />
+        <PrivateRoute authed={isAuthenticated()} path="/" component={HomeContainer} />
       </Switch>
     </div>
   );

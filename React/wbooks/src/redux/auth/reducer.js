@@ -1,86 +1,21 @@
-import { authActions } from './actions';
+import { createReducer, completeReducer, completeState } from 'redux-recompose';
+import Immutable from 'seamless-immutable';
 
-/* ------------- Auth reducer ------------- */
-const initialState = {
-  logState: {
-    logging: false,
-    loginFail: false,
-    logout: false,
-    signing: false,
-    signupfail: false
+import { actions } from './actions';
+
+const stateDescription = {
+  login: null,
+  logout: false,
+  signin: null
+};
+
+const initialState = completeState(stateDescription, ['logout']);
+
+const reducerDescription = {
+  primaryActions: [actions.LOGIN, actions.SIGNUP],
+  override: {
+    [actions.LOGOUT]: state => state.merge({ logout: true, login: null, signin: null })
   }
 };
 
-/* eslint-disable complexity */
-export function reducer(state = initialState, action) {
-  switch (action.type) {
-    case authActions.login: {
-      return {
-        ...state,
-        logState: {
-          logging: true,
-          loggedIn: false,
-          loginFail: false
-        }
-      };
-    }
-    case authActions.loginFailure: {
-      return {
-        ...state,
-        logState: {
-          logging: false,
-          loggedIn: false,
-          loginFail: true
-        }
-      };
-    }
-    case authActions.loginSuccess: {
-      return {
-        ...state,
-        logState: {
-          logging: true,
-          loggedIn: true,
-          loginFail: false
-        }
-      };
-    }
-    case authActions.logout: {
-      return {
-        ...state,
-        logState: {
-          logout: true
-        }
-      };
-    }
-    case authActions.signup: {
-      return {
-        ...state,
-        signState: {
-          signing: true,
-          signupfail: false
-        }
-      };
-    }
-    case authActions.signupFailure: {
-      return {
-        ...state,
-        signState: {
-          signing: false,
-          signupfail: true
-        }
-      };
-    }
-    case authActions.signupSuccess: {
-      return {
-        ...state,
-        signState: {
-          signing: false,
-          signupfail: false
-        }
-      };
-    }
-    default: {
-      return state;
-    }
-  }
-}
+export default createReducer(Immutable(initialState), completeReducer(reducerDescription));

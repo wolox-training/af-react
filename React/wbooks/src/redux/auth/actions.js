@@ -14,11 +14,11 @@ export const authActions = {
 };
 
 const ActionCreators = {
-  logout: () => {
+  logout: () => dispatch => {
     localStorage.removeSessionToken();
     api.setHeader('Authorization', '');
     history.push('/login');
-    return { type: authActions.logout };
+    dispatch({ type: authActions.logout });
   },
   login: (email, password) => async dispatch => {
     dispatch({ type: authActions.login });

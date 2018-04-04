@@ -14,6 +14,7 @@ class BookDetail extends Component {
   componentDidMount() {
     this.props.dispatch(ActionCreators.bookDetail(this.props.match.params.id));
   }
+
   render() {
     const book = this.props.items ? this.props.items : null;
 
@@ -44,8 +45,18 @@ class BookDetail extends Component {
   }
 }
 
+const BookPropType = {
+  id: PropTypes.number.isRequired,
+  author: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  genre: PropTypes.string.isRequired,
+  publisher: PropTypes.string.isRequired,
+  year: PropTypes.string.isRequired,
+  image_url: PropTypes.string
+};
+
 BookDetail.propTypes = {
-  items: PropTypes.arrayOf
+  items: PropTypes.shape(BookPropType)
 };
 
 const mapStateToProps = state => ({

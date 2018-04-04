@@ -32,18 +32,18 @@ const ActionCreators = {
     const response = await UserService.books();
     if (response.ok) {
       dispatch(fetchSuccess(response.data, allBooksFetchActions.FETCH_SUCCESS));
-      return response.data;
+    } else {
+      dispatch(fetchError(response.problem, allBooksFetchActions.FETCH_FAILURE));
     }
-    return dispatch(fetchError(response.problem, allBooksFetchActions.FETCH_FAILURE));
   },
   bookDetail: id => async dispatch => {
     dispatch(fetchBegin(bookDetailFetchActions.FETCH_BEGIN));
     const response = await UserService.bookDetail(id);
     if (response.ok) {
       dispatch(fetchSuccess(response.data, bookDetailFetchActions.FETCH_SUCCESS));
-      return response.data;
+    } else {
+      dispatch(fetchError(response.problem, bookDetailFetchActions.FETCH_FAILURE));
     }
-    return dispatch(fetchError(response.problem, bookDetailFetchActions.FETCH_FAILURE));
   }
 };
 

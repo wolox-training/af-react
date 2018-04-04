@@ -14,7 +14,7 @@ const initialState = completeState(stateDescription, ['logout']);
 const reducerDescription = {
   primaryActions: [actions.LOGIN, actions.SIGNUP],
   override: {
-    [actions.LOGOUT]: state => ({ ...state, logout: true })
+    [actions.LOGOUT]: state => state.merge({ logout: true, login: null, signin: null })
   }
 };
 

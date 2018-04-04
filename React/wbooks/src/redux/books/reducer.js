@@ -1,62 +1,17 @@
-import { allBooksFetchActions, bookDetailFetchActions } from './actions';
+import { createReducer, completeReducer, completeState } from 'redux-recompose';
+import Immutable from 'seamless-immutable';
 
-const initialState = {
-  books: [],
-  loadingBooks: false,
-  errorBooks: null,
-  bookDetail: null,
-  loadingDetail: false,
-  errorDetail: false
+import { actions } from './actions';
+
+const stateDescription = {
+  books: null,
+  bookDetail: null
 };
 
-export function reducer(state = initialState, action) {
-  switch (action.type) {
-    case allBooksFetchActions.FETCH_BEGIN:
-      return {
-        ...state,
-        loadingBooks: true,
-        errorBooks: null
-      };
+const initialState = completeState(stateDescription);
 
-    case allBooksFetchActions.FETCH_SUCCESS:
-      return {
-        ...state,
-        loadingBooks: false,
-        books: action.payload.data
-      };
+const reducerDescription = {
+  primaryActions: [actions.GET_ALL_BOOKS, actions.GET_BOOK_DETAIL]
+};
 
-    case allBooksFetchActions.FETCH_FAILURE:
-      return {
-        ...state,
-        loadingBooks: false,
-        errorBooks: action.payload,
-        books: []
-      };
-
-    case bookDetailFetchActions.FETCH_BEGIN:
-      return {
-        ...state,
-        loadingDetail: true,
-        errorDetail: null,
-        bookDetail: null
-      };
-
-    case bookDetailFetchActions.FETCH_SUCCESS:
-      return {
-        ...state,
-        loadingDetail: false,
-        bookDetail: action.payload.data
-      };
-
-    case bookDetailFetchActions.FETCH_FAILURE:
-      return {
-        ...state,
-        loadingDetail: false,
-        errorDetail: action.payload,
-        bookDetail: null
-      };
-
-    default:
-      return state;
-  }
-}
+export default createReducer(Immutable(initialState), completeReducer(reducerDescription));

@@ -16,7 +16,7 @@ function Home({ filterOption, searchText, handleFilterOptionChange, handleSearch
         onFilterOptionChange={handleFilterOptionChange}
       />
       <BookSearch searchText={searchText} onSearchTextChange={handleSearchTextChange} />
-      <BookContainer books={BOOKS} searchText={searchText} filterOption={filterOption} />
+      <BookContainer searchText={searchText} filterOption={filterOption} />
     </div>
   );
 }

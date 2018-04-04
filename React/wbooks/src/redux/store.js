@@ -2,10 +2,11 @@ import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import { routerReducer as router, routerMiddleware } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
+import { fetchMiddleware } from 'redux-recompose';
 import { reducer as form } from 'redux-form';
 
-import { reducer as auth } from './auth/reducer';
-import { reducer as books } from './books/reducer';
+import auth from './auth/reducer';
+import books from './books/reducer';
 
 export const history = createHistory();
 
@@ -16,7 +17,7 @@ const reducers = combineReducers({
   books
 });
 
-const middlewares = [thunk, routerMiddleware(history)];
+const middlewares = [fetchMiddleware, thunk, routerMiddleware(history)];
 const enhancers = [applyMiddleware(...middlewares)];
 
 // eslint-disable-next-line no-underscore-dangle

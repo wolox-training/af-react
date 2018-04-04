@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -25,7 +25,7 @@ class BookDetail extends Component {
             &lt; Volver
           </Link>
           {book && (
-            <div>
+            <Fragment>
               <BookDetailInfo
                 imageUrl={book.image_url}
                 title={book.title}
@@ -35,7 +35,7 @@ class BookDetail extends Component {
               />
               <hr />
               <BookSuggestions suggestions={BOOKS.filter(b => b.genre === book.genre)} />
-            </div>
+            </Fragment>
           )}
           <hr />
           <CommentSection />
@@ -61,8 +61,7 @@ BookDetail.propTypes = {
 
 const mapStateToProps = state => ({
   items: state.books.bookDetail,
-  loading: state.books.loadingDetail,
-  error: state.books.errorDetail
+  loading: state.books.bookDetailLoading
 });
 
 export default connect(mapStateToProps)(BookDetail);

@@ -2,7 +2,10 @@ import { completeTypes, createTypes } from 'redux-recompose';
 
 import UserService from '../../Services/UserService';
 
-export const actions = createTypes(completeTypes(['GET_ALL_BOOKS', 'GET_BOOK_DETAIL']), '@@BOOK');
+export const actions = createTypes(
+  completeTypes(['GET_ALL_BOOKS', 'GET_BOOK_DETAIL', 'GET_RENT_LIST', 'GET_WISH_LIST', 'MAKE_WISH']),
+  '@@BOOK'
+);
 
 const ActionCreators = {
   books: () => ({

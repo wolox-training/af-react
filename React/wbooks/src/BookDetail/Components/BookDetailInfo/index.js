@@ -1,26 +1,47 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import BookCover from '../../../Components/BookCover';
 
-function BookDetailInfo({ imageUrl, title, author, year, genre }) {
-  return (
-    <div className="book-detail-container">
-      <BookCover imageUrl={imageUrl} imgStyle="book-detail-img" title={title} />
-      <div className="book-detail-info-container">
-        <h3 className="book-detail-title">{title}</h3>
-        <span className="book-detail-author">{author}</span>
-        <span className="book-detail-year">{year}</span>
-        <span className="book-detail-genre">{genre}</span>
-        <p className="book-detail-desc">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-          et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
-        </p>
-        <button className="book-detail-rent-button">Alquilar</button>
+import './style.css';
+
+class BookDetailInfo extends Component {
+  componentDidMount = () => {};
+
+  rentButtonHandler = () => {};
+
+  wishlistButtonHandler = () => {};
+
+  render() {
+    const { imageUrl, title, author, year, genre } = this.props;
+    const rentButton = (
+      <button className="book-detail-rent-button" onClick={this.rentButtonHandler}>
+        Alquilar
+      </button>
+    );
+    const wishlistButton = (
+      <button className="book-detail-wishlist-button" onClick={this.wishlistButtonHandler}>
+        Wishlist
+      </button>
+    );
+    return (
+      <div className="book-detail-container">
+        <BookCover imageUrl={imageUrl} imgStyle="book-detail-img" title={title} />
+        <div className="book-detail-info-container">
+          <h3 className="book-detail-title">{title}</h3>
+          <span className="book-detail-author">{author}</span>
+          <span className="book-detail-year">{year}</span>
+          <span className="book-detail-genre">{genre}</span>
+          <p className="book-detail-desc">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+            nisi ut aliquip ex ea commodo consequat.
+          </p>
+          {wishlistButton}
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 BookDetailInfo.propTypes = {

@@ -1,0 +1,12 @@
+@import "../../../Components/app.scss";
+
+.book-input {
+  &.theme-light {
+    color: $grey-font;
+    background-color: $light-grey;
+  }
+  &.theme-dark {
+    color: $white;
+    background-color: $grey-font;
+  }
+}

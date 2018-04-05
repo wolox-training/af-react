@@ -1,4 +1,19 @@
+@import "../../../../../Components/app.scss";
+
 .book-image {
   height: 182px;
   width: 128px;
+
+  &.theme-dark {
+    box-shadow: 0 0 20px 0 $white;
+  }
+}
+
+.theme-light {
+}
+
+.book-title {
+  &.theme-dark {
+    color: $white;
+  }
 }

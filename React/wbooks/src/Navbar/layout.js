@@ -8,43 +8,45 @@ import notificationsImg from '../assets/notifications.svg';
 import addBookImg from '../assets/add_book.svg';
 import profileImg from '../assets/cat_no_banana.jpeg';
 import './style.css';
-import { ThemeContext } from '../Context/ThemeProvider';
+import { withTheme } from '../HOC/withTheme';
+import { routes } from '../Config/routes';
 
 import Menu from './Components/Menu';
 import Notifications from './Components/Notifications';
 import ThemeToogler from './Components/ThemeToggler';
 
-function NavBar({ logoutHandler, isMenuDisplayed, areNotificationsDisplayed, onToogleNotif, onToogleMenu }) {
+function NavBar({
+  logoutHandler,
+  isMenuDisplayed,
+  areNotificationsDisplayed,
+  onToogleNotif,
+  onToogleMenu,
+  theme
+}) {
   const menu = isMenuDisplayed ? <Menu logoutHandler={logoutHandler} /> : null;
   const notifications = areNotificationsDisplayed ? <Notifications /> : null;
   return (
-    <ThemeContext.Consumer>
-      {context => (
-        <header className={`navbar theme-${context.state.theme}`}>
-          <Link to="/">
-            <img
-              src={context.state.theme === 'light' ? logoLight : logoDark}
-              alt="logo"
-              className={`wolox-logo theme-${context.state.theme}`}
-            />
-          </Link>
-          <button onClick={context.handleToogleTheme}>
-            <ThemeToogler onClick={context.handleToogleTheme} />
-          </button>
-          <nav>
-            <button onClick={onToogleNotif}>
-              <img src={notificationsImg} alt="notifications" className="notifications-img" />
-            </button>
-            <img src={addBookImg} alt="addBook" className="addBook-img" />
-            <button onClick={onToogleMenu}>
-              <img src={profileImg} alt="profile" className="profile-img" />
-            </button>
-            {menu}
-            {notifications}
-          </nav>
-        </header>
-      )}
-    </ThemeContext.Consumer>
+    <header className={`navbar theme-${theme}`}>
+      <Link to={routes.PRIVATE_ROUTE}>
+        <img
+          src={theme === 'light' ? logoLight : logoDark}
+          alt="logo"
+          className={`wolox-logo theme-${theme}`}
+        />
+      </Link>
+      <ThemeToogler />
+      <nav>
+        <button onClick={onToogleNotif}>
+          <img src={notificationsImg} alt="notifications" className="notifications-img" />
+        </button>
+        <img src={addBookImg} alt="addBook" className="addBook-img" />
+        <button onClick={onToogleMenu}>
+          <img src={profileImg} alt="profile" className="profile-img" />
+        </button>
+        {menu}
+        {notifications}
+      </nav>
+    </header>
   );
 }
 
@@ -53,7 +55,8 @@ NavBar.propTypes = {
   onToogleNotif: PropTypes.func.isRequired,
   onToogleMenu: PropTypes.func.isRequired,
   isMenuDisplayed: PropTypes.bool.isRequired,
-  areNotificationsDisplayed: PropTypes.bool.isRequired
+  areNotificationsDisplayed: PropTypes.bool.isRequired,
+  theme: PropTypes.string.isRequired
 };
 
-export default NavBar;
+export default withTheme(NavBar);

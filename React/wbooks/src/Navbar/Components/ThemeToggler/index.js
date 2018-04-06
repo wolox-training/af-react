@@ -1,12 +1,17 @@
+// Source: https://codepen.io/jsndks/pen/qEXzOQ
+
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './style.css';
 
-function ThemeToggler() {
+import { withTheme } from '../../../HOC/withTheme';
+
+function ThemeToggler({ handleToogleTheme }) {
   return (
     <div className="wrapper">
       <div className="toggle">
-        <input className="toggle-input" type="checkbox" />
+        <input className="toggle-input" type="checkbox" onClick={handleToogleTheme} />
         <div className="toggle-bg" />
         <div className="toggle-switch">
           <div className="toggle-switch-figure" />
@@ -17,4 +22,8 @@ function ThemeToggler() {
   );
 }
 
-export default ThemeToggler;
+ThemeToggler.propTypes = {
+  handleToogleTheme: PropTypes.func.isRequired
+};
+
+export default withTheme(ThemeToggler);

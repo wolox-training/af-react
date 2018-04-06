@@ -1,29 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { ThemeContext } from '../../../../../Context/ThemeProvider';
 import BookCover from '../../../../../Components/BookCover';
+import { withTheme } from '../../../../../HOC/withTheme';
 
 import './style.css';
 
-function BookInfo({ author, title, imageUrl }) {
+function BookInfo({ author, title, imageUrl, theme }) {
   return (
-    <ThemeContext.Consumer>
-      {context => (
-        <div className={`book-info theme-${context.state.theme}`}>
-          <BookCover imageUrl={imageUrl} imgStyle={`book-image theme-${context.state.theme}`} title={title} />
-          <h4 className={`book-title theme-${context.state.theme}`}>{title}</h4>
-          <span className="book-author">{author}</span>
-        </div>
-      )}
-    </ThemeContext.Consumer>
+    <div className={`book-info theme-${theme}`}>
+      <BookCover imageUrl={imageUrl} imgStyle={`book-image theme-${theme}`} title={title} />
+      <h4 className={`book-title theme-${theme}`}>{title}</h4>
+      <span className="book-author">{author}</span>
+    </div>
   );
 }
 
 BookInfo.propTypes = {
   author: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  imageUrl: PropTypes.string
+  imageUrl: PropTypes.string,
+  theme: PropTypes.string.isRequired
 };
 
-export default BookInfo;
+export default withTheme(BookInfo);

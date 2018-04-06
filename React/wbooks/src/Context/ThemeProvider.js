@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
 
-export const ThemeContext = React.createContext();
+import { themes } from '../Config/themes';
+
+const ThemeContext = React.createContext();
 
 export class ThemeProvider extends Component {
   state = {
-    theme: 'light'
+    theme: themes.LIGHT
   };
   handleToogleTheme = () =>
-    this.state.theme === 'light' ? this.setState({ theme: 'dark' }) : this.setState({ theme: 'light' });
+    this.state.theme === themes.LIGHT
+      ? this.setState({ theme: themes.DARK })
+      : this.setState({ theme: themes.LIGHT });
 
   render() {
     return (
       <ThemeContext.Provider
         value={{
-          state: this.state,
+          theme: this.state.theme,
           handleToogleTheme: this.handleToogleTheme
         }}
       >
@@ -22,3 +26,5 @@ export class ThemeProvider extends Component {
     );
   }
 }
+
+export default ThemeContext;

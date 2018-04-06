@@ -14,6 +14,7 @@ import { routes } from '../Config/routes';
 import Menu from './Components/Menu';
 import Notifications from './Components/Notifications';
 import ThemeToogler from './Components/ThemeToggler';
+import Dropdowns from './Components/Dropdowns';
 
 function NavBar({
   logoutHandler,
@@ -43,8 +44,10 @@ function NavBar({
         <button onClick={onToogleMenu}>
           <img src={profileImg} alt="profile" className="profile-img" />
         </button>
-        {menu}
-        {notifications}
+        <Dropdowns>
+          <Notifications />
+          <Menu />
+        </Dropdowns>
       </nav>
     </header>
   );

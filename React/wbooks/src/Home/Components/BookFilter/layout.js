@@ -1,9 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function BookFilter({ filters, handleFilterOptionChange }) {
+import withTheme from '../../../HOC/withTheme';
+
+import './style.css';
+
+function BookFilter({ filters, handleFilterOptionChange, theme }) {
   return (
-    <select className="book-input" onChange={handleFilterOptionChange}>
+    <select className={`book-input theme-${theme}`} onChange={handleFilterOptionChange}>
       <option key="Placeholder" value="placeholder" defaultValue="selected">
         Seleccionar filtro:
       </option>
@@ -17,7 +21,8 @@ function BookFilter({ filters, handleFilterOptionChange }) {
 }
 BookFilter.propTypes = {
   filters: PropTypes.arrayOf(PropTypes.string).isRequired,
-  handleFilterOptionChange: PropTypes.func.isRequired
+  handleFilterOptionChange: PropTypes.func.isRequired,
+  theme: PropTypes.string.isRequired
 };
 
-export default BookFilter;
+export default withTheme(BookFilter);

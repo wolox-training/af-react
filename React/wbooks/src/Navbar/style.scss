@@ -2,8 +2,6 @@
 
 .navbar {
   align-items: center;
-  background: $white;
-  box-shadow: 0 0 20px 0 $grey;
   display: flex;
   justify-content: space-between;
   height: 80px;
@@ -13,6 +11,16 @@
   top: 0;
   width: 100%;
   z-index: 100;
+
+  &.theme-light {
+    background: $white;
+    box-shadow: 0 0 20px 0 $grey;
+  }
+
+  &.theme-dark {
+    background: $black;
+    box-shadow: 0 0 20px 0 $white;
+  }
 }
 
 .wolox-logo {

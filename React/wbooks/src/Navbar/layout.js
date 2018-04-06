@@ -2,23 +2,39 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import logo from '../assets/wbooks_logo.svg';
+import logoDark from '../assets/wbooks_logo_dark.svg';
+import logoLight from '../assets/wbooks_logo_light.svg';
 import notificationsImg from '../assets/notifications.svg';
 import addBookImg from '../assets/add_book.svg';
 import profileImg from '../assets/cat_no_banana.jpeg';
 import './style.css';
+import withTheme from '../HOC/withTheme';
+import { routes } from '../Config/routes';
 
 import Menu from './Components/Menu';
 import Notifications from './Components/Notifications';
+import ThemeToogler from './Components/ThemeToggler';
 
-function NavBar({ logoutHandler, isMenuDisplayed, areNotificationsDisplayed, onToogleNotif, onToogleMenu }) {
+function NavBar({
+  logoutHandler,
+  isMenuDisplayed,
+  areNotificationsDisplayed,
+  onToogleNotif,
+  onToogleMenu,
+  theme
+}) {
   const menu = isMenuDisplayed ? <Menu logoutHandler={logoutHandler} /> : null;
   const notifications = areNotificationsDisplayed ? <Notifications /> : null;
   return (
-    <header className="navbar">
-      <Link to="/">
-        <img src={logo} alt="logo" className="wolox-logo" />
+    <header className={`navbar theme-${theme}`}>
+      <Link to={routes.PRIVATE_ROUTE}>
+        <img
+          src={theme === 'light' ? logoLight : logoDark}
+          alt="logo"
+          className={`wolox-logo theme-${theme}`}
+        />
       </Link>
+      <ThemeToogler />
       <nav>
         <button onClick={onToogleNotif}>
           <img src={notificationsImg} alt="notifications" className="notifications-img" />
@@ -39,7 +55,8 @@ NavBar.propTypes = {
   onToogleNotif: PropTypes.func.isRequired,
   onToogleMenu: PropTypes.func.isRequired,
   isMenuDisplayed: PropTypes.bool.isRequired,
-  areNotificationsDisplayed: PropTypes.bool.isRequired
+  areNotificationsDisplayed: PropTypes.bool.isRequired,
+  theme: PropTypes.string.isRequired
 };
 
-export default NavBar;
+export default withTheme(NavBar);

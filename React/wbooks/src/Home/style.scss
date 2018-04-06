@@ -1,0 +1,13 @@
+@import "../Components/app.scss";
+
+.theme-light {
+  background: $white;
+}
+
+.theme-dark {
+  background: $black;
+}
+
+.body-container {
+  min-height: 100vh;
+}

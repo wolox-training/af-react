@@ -12,12 +12,19 @@
 }
 
 .notifications-container {
-  background: white;
   box-shadow: 0px 5px 20px 0 $grey;
   position: absolute;
   right: 160px;
   top: 70px;
   width: 323px;
+
+  &.theme-light {
+    background: white;
+  }
+
+  &.theme-dark {
+    background: black;
+  }
 }
 
 .notification {
@@ -49,6 +56,13 @@
   font-size: $font-size-medium;
   font-weight: bold;
   margin-bottom: 5px;
+
+  &.theme-light {
+  }
+
+  &.theme-dark {
+    color: white;
+  }
 }
 
 .book-author {

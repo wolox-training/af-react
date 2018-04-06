@@ -84,11 +84,9 @@ li {
   color: #999;
   opacity: 1; }
 
-.theme-light {
-  background: #ffffff; }
-
-.theme-dark {
-  background: #000000; }
-
 .body-container {
   min-height: 100vh; }
+  .body-container.theme-light {
+    background: #ffffff; }
+  .body-container.theme-dark {
+    background: #000000; }

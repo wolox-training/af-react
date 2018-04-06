@@ -1,8 +1,8 @@
 import React from 'react';
 
-import ThemeContext from '../Context/ThemeProvider';
+import { ThemeContext } from '../Context/ThemeProvider';
 
-export function withTheme(Component) {
+function withTheme(Component) {
   return function ThemedComponent(props) {
     return (
       <ThemeContext.Consumer>
@@ -13,3 +13,5 @@ export function withTheme(Component) {
     );
   };
 }
+
+export default withTheme;

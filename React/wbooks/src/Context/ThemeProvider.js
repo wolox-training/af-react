@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 
 import { themes } from '../Config/themes';
 
-const ThemeContext = React.createContext();
+export const ThemeContext = React.createContext();
 
-export class ThemeProvider extends Component {
+class ThemeProvider extends Component {
   state = {
     theme: themes.LIGHT
   };
@@ -27,4 +27,4 @@ export class ThemeProvider extends Component {
   }
 }
 
-export default ThemeContext;
+export default ThemeProvider;

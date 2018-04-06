@@ -8,7 +8,7 @@ import notificationsImg from '../assets/notifications.svg';
 import addBookImg from '../assets/add_book.svg';
 import profileImg from '../assets/cat_no_banana.jpeg';
 import './style.css';
-import { withTheme } from '../HOC/withTheme';
+import withTheme from '../HOC/withTheme';
 import { routes } from '../Config/routes';
 
 import Menu from './Components/Menu';

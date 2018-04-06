@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
-import { ThemeProvider } from './Context/ThemeProvider';
+import ThemeProvider from './Context/ThemeProvider';
 import store from './redux/store';
 import history from './Config/history';
 import WBooks from './WBooks';

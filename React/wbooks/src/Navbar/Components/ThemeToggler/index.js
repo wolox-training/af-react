@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import './style.css';
 
-import { withTheme } from '../../../HOC/withTheme';
+import withTheme from '../../../HOC/withTheme';
 
 function ThemeToggler({ handleToogleTheme }) {
   return (

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import BookCover from '../../../../../Components/BookCover';
-import { withTheme } from '../../../../../HOC/withTheme';
+import withTheme from '../../../../../HOC/withTheme';
 
 import './style.css';
 

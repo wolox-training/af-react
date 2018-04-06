@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { withTheme } from '../HOC/withTheme';
+import withTheme from '../HOC/withTheme';
 import { FILTERS } from '../books_json';
 
 import './style.css';

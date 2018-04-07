@@ -8,7 +8,7 @@ require('dotenv').config();
 const accessToken = isAuthenticated() ? localStorage.getSessionToken() : null;
 
 const api = create({
-  baseURL: process.env.REACT_APP_BASE_URL,
+  baseURL: 'https://wbooks-api-stage.herokuapp.com/api/v1/',
   headers: { Accept: 'application/json', Authorization: accessToken },
   timeout: 7000
 });

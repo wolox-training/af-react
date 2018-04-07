@@ -4,7 +4,6 @@ import { Form, Field, reduxForm } from 'redux-form';
 
 import FormInput from '../Components/FormInput/FormInput';
 import { email, passLength, required, passFormat, name } from '../Utils/inputValidations';
-import '../Components/forms.css';
 
 function Signup({ handleSubmit }) {
   return (

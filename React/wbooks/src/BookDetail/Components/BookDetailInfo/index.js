@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import BookCover from '../../../Components/BookCover';
+import './style.css';
 
 function BookDetailInfo({ imageUrl, title, author, year, genre }) {
   return (
     <div className="book-detail-container">
-      <BookCover imageUrl={imageUrl} imgStyle="book-detail-img" title={title} />
+      <BookCover imageUrl={imageUrl} imgStyle="book-detail-cover" title={title} />
       <div className="book-detail-info-container">
         <h3 className="book-detail-title">{title}</h3>
         <span className="book-detail-author">{author}</span>

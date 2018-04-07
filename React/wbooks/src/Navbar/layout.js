@@ -15,17 +15,10 @@ import Menu from './Components/Menu';
 import Notifications from './Components/Notifications';
 import ThemeToogler from './Components/ThemeToggler';
 import Dropdowns from './Components/Dropdowns';
+import DropTabList from './Components/Dropdowns/DropTabList';
+import DropElemList from './Components/Dropdowns/DropElemList';
 
-function NavBar({
-  logoutHandler,
-  isMenuDisplayed,
-  areNotificationsDisplayed,
-  onToogleNotif,
-  onToogleMenu,
-  theme
-}) {
-  const menu = isMenuDisplayed ? <Menu logoutHandler={logoutHandler} /> : null;
-  const notifications = areNotificationsDisplayed ? <Notifications /> : null;
+function NavBar({ logoutHandler, theme }) {
   return (
     <header className={`navbar theme-${theme}`}>
       <Link to={routes.PRIVATE_ROUTE}>
@@ -37,16 +30,17 @@ function NavBar({
       </Link>
       <ThemeToogler />
       <nav>
-        <button onClick={onToogleNotif}>
-          <img src={notificationsImg} alt="notifications" className="notifications-img" />
-        </button>
-        <img src={addBookImg} alt="addBook" className="addBook-img" />
-        <button onClick={onToogleMenu}>
-          <img src={profileImg} alt="profile" className="profile-img" />
-        </button>
         <Dropdowns>
-          <Notifications />
-          <Menu />
+          <DropTabList>
+            <img src={notificationsImg} alt="notifications" className="notifications-img" />
+            <img src={addBookImg} alt="addBook" className="addBook-img" />
+            <img src={profileImg} alt="profile" className="profile-img" />
+          </DropTabList>
+          <DropElemList>
+            <Notifications />
+            {null}
+            <Menu logoutHandler={logoutHandler} />
+          </DropElemList>
         </Dropdowns>
       </nav>
     </header>
@@ -55,10 +49,6 @@ function NavBar({
 
 NavBar.propTypes = {
   logoutHandler: PropTypes.func.isRequired,
-  onToogleNotif: PropTypes.func.isRequired,
-  onToogleMenu: PropTypes.func.isRequired,
-  isMenuDisplayed: PropTypes.bool.isRequired,
-  areNotificationsDisplayed: PropTypes.bool.isRequired,
   theme: PropTypes.string.isRequired
 };
 

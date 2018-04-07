@@ -1,26 +1,32 @@
-import React, { Component, Children } from 'react';
+import React, { Component } from 'react';
+
+export const dropdownContext = React.createContext();
 
 class Dropdowns extends Component {
   state = {
     activeDropdown: -1
   };
 
-  componentDidMount = () => {};
-
-  dropdownContext = React.createContext();
+  updateActive = value => () => {
+    if (value === this.state.activeDropdown) {
+      this.setState({ activeDropdown: -1 });
+    } else {
+      this.setState({ activeDropdown: value });
+    }
+  };
 
   render() {
     return (
-      <this.dropdownContext.Provider value={this.state}>{this.props.children}</this.dropdownContext.Provider>
+      <dropdownContext.Provider
+        value={{
+          updateActive: this.updateActive,
+          activeDropdown: this.state.activeDropdown
+        }}
+      >
+        {this.props.children}
+      </dropdownContext.Provider>
     );
   }
 }
 
 export default Dropdowns;
-
-// return Children.map(this.props.children, (child, index) => {
-//   if (index === this.state.activeDropdown) {
-//     return child;
-//   }
-//   return null;
-// });
